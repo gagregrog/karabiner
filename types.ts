@@ -153,7 +153,7 @@ export interface MouseKey {
 }
 
 export interface SoftwareFunction {
-  iokit_power_management_sleep_system?: {};
+  iokit_power_management_sleep_system?: object;
 }
 
 export type KeyCode =

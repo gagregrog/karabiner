@@ -172,7 +172,7 @@ export function open(...what: string[]): LayerCommand {
  */
 export function shell(
   strings: TemplateStringsArray,
-  ...values: any[]
+  ...values: string[]
 ): LayerCommand {
   const commands = strings.reduce((acc, str, i) => {
     const value = i < values.length ? values[i] : "";
