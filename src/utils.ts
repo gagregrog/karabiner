@@ -1,5 +1,54 @@
 import { To, KeyCode, Manipulator, KarabinerRules } from "./types";
 
+const HYPER_VAR = "hyper";
+const VAR_OFF = 0;
+const VAR_ON = 1;
+
+/**
+ * Initialize Caps Lock as the Hyper Key
+ * When held, control + alt + command + shift is activated
+ * When tapped, escape is sent
+ */
+export function initHyperKey(): KarabinerRules {
+  // Define the Hyper key itself
+  return {
+    description: "Hyper Key (⌃⌥⇧⌘)",
+    manipulators: [
+      {
+        description: "Caps Lock -> Hyper Key",
+        from: {
+          key_code: "caps_lock",
+          modifiers: {
+            optional: ["any"],
+          },
+        },
+        to: [
+          {
+            set_variable: {
+              name: HYPER_VAR,
+              value: VAR_ON,
+            },
+          },
+        ],
+        to_after_key_up: [
+          {
+            set_variable: {
+              name: HYPER_VAR,
+              value: VAR_OFF,
+            },
+          },
+        ],
+        to_if_alone: [
+          {
+            key_code: "escape",
+          },
+        ],
+        type: "basic",
+      },
+    ],
+  };
+}
+
 /**
  * Custom way to describe a command in a layer
  */
@@ -8,10 +57,7 @@ export interface LayerCommand {
   description?: string;
 }
 
-type HyperKeySublayer = {
-  // The ? is necessary, otherwise we'd have to define something for _every_ key code
-  [key_code in KeyCode]?: LayerCommand;
-};
+type HyperKeySublayer = Partial<Record<KeyCode, LayerCommand>>;
 
 /**
  * Create a Hyper Key sublayer, where every command is prefixed with a key
@@ -42,7 +88,7 @@ export function createHyperSubLayer(
             name: subLayerVariableName,
             // The default value of a variable is 0: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/conditions/variable/
             // That means by using 0 and 1 we can filter for "0" in the conditions below and it'll work on startup
-            value: 0,
+            value: VAR_OFF,
           },
         },
       ],
@@ -50,7 +96,7 @@ export function createHyperSubLayer(
         {
           set_variable: {
             name: subLayerVariableName,
-            value: 1,
+            value: VAR_ON,
           },
         },
       ],
@@ -65,12 +111,12 @@ export function createHyperSubLayer(
           .map((subLayerVariable) => ({
             type: "variable_if" as const,
             name: subLayerVariable,
-            value: 0,
+            value: VAR_OFF,
           })),
         {
           type: "variable_if",
-          name: "hyper",
-          value: 1,
+          name: HYPER_VAR,
+          value: VAR_ON,
         },
       ],
     },
@@ -90,7 +136,7 @@ export function createHyperSubLayer(
           {
             type: "variable_if",
             name: subLayerVariableName,
-            value: 1,
+            value: VAR_ON,
           },
         ],
       })
@@ -103,9 +149,9 @@ export function createHyperSubLayer(
  * have all the hyper variable names in order to filter them and make sure only one
  * activates at a time
  */
-export function createHyperSubLayers(subLayers: {
-  [key_code in KeyCode]?: HyperKeySublayer | LayerCommand;
-}): KarabinerRules[] {
+export function createHyperSubLayers(
+  subLayers: Partial<Record<KeyCode, HyperKeySublayer | LayerCommand>>
+): KarabinerRules[] {
   const allSubLayerVariables = (
     Object.keys(subLayers) as (keyof typeof subLayers)[]
   ).map((sublayer_key) => generateSubLayerVariableName(sublayer_key));
@@ -127,13 +173,13 @@ export function createHyperSubLayers(subLayers: {
               conditions: [
                 {
                   type: "variable_if",
-                  name: "hyper",
-                  value: 1,
+                  name: HYPER_VAR,
+                  value: VAR_ON,
                 },
                 ...allSubLayerVariables.map((subLayerVariable) => ({
                   type: "variable_if" as const,
                   name: subLayerVariable,
-                  value: 0,
+                  value: VAR_OFF,
                 })),
               ],
             },
