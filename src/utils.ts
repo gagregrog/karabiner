@@ -1,31 +1,37 @@
-import { To, KeyCode, Manipulator, KarabinerRules } from "./types";
-
-const HYPER_VAR = "hyper";
-const VAR_OFF = 0;
-const VAR_ON = 1;
+import { VAR_OFF, VAR_ON } from "./constants";
+import { To, KeyCode, Manipulator, Rule, Parameters } from "./types";
 
 /**
- * Initialize Caps Lock as the Hyper Key
- * When held, control + alt + command + shift is activated
- * When tapped, escape is sent
+ * Modify and track a keypress
  */
-export function initHyperKey(): KarabinerRules {
-  // Define the Hyper key itself
+export function createTrackedKey({
+  name,
+  description,
+  fromKey,
+  toIfAloneKey,
+  toIfHeldKey,
+  parameters,
+}: {
+  name: string;
+  description: string;
+  fromKey: KeyCode;
+  toIfAloneKey?: KeyCode;
+  toIfHeldKey?: KeyCode;
+  parameters?: Parameters;
+}): { description: string; manipulators: Manipulator[] } {
   return {
-    description: "Hyper Key (⌃⌥⇧⌘)",
+    description,
     manipulators: [
       {
-        description: "Caps Lock -> Hyper Key",
+        description: `${fromKey} -> ${name}`,
         from: {
-          key_code: "caps_lock",
-          modifiers: {
-            optional: ["any"],
-          },
+          key_code: fromKey,
+          modifiers: { optional: ["any"] },
         },
         to: [
           {
             set_variable: {
-              name: HYPER_VAR,
+              name: generateVariableName(name),
               value: VAR_ON,
             },
           },
@@ -33,16 +39,14 @@ export function initHyperKey(): KarabinerRules {
         to_after_key_up: [
           {
             set_variable: {
-              name: HYPER_VAR,
+              name: generateVariableName(name),
               value: VAR_OFF,
             },
           },
         ],
-        to_if_alone: [
-          {
-            key_code: "escape",
-          },
-        ],
+        ...(toIfAloneKey && { to_if_alone: [{ key_code: toIfAloneKey }] }),
+        ...(toIfHeldKey && { to_if_held_down: [{ key_code: toIfHeldKey }] }),
+        parameters,
         type: "basic",
       },
     ],
@@ -52,29 +56,31 @@ export function initHyperKey(): KarabinerRules {
 /**
  * Custom way to describe a command in a layer
  */
-export interface LayerCommand {
+interface LayerCommand {
   to: To[];
   description?: string;
 }
 
-type HyperKeySublayer = Partial<Record<KeyCode, LayerCommand>>;
+type LayerKeySublayer = Partial<Record<KeyCode, LayerCommand>>;
 
 /**
- * Create a Hyper Key sublayer, where every command is prefixed with a key
- * e.g. Hyper + O ("Open") is the "open applications" layer, I can press
- * e.g. Hyper + O + G ("Google Chrome") to open Chrome
+ * Create a sublayer where every command is prefixed with a trackedVar
+ * e.g. LAYER + O ("Open") is the "open applications" layer, I can press
+ * e.g. LAYER + O + G ("Google Chrome") to open Chrome
  */
-export function createHyperSubLayer(
+export function createSubLayer(
+  parentLayerName: string,
   sublayer_key: KeyCode,
-  commands: HyperKeySublayer,
+  commands: LayerKeySublayer,
   allSubLayerVariables: string[]
 ): Manipulator[] {
-  const subLayerVariableName = generateSubLayerVariableName(sublayer_key);
+  const parentVariableName = generateVariableName(parentLayerName);
+  const subLayerVariableName = generateVariableName(sublayer_key);
 
   return [
-    // When Hyper + sublayer_key is pressed, set the variable to 1; on key_up, set it to 0 again
+    // When LAYER + sublayer_key is pressed, set the variable to 1; on key_up, set it to 0 again
     {
-      description: `Toggle Hyper sublayer ${sublayer_key}`,
+      description: `Toggle ${parentLayerName} sublayer ${sublayer_key}`,
       type: "basic",
       from: {
         key_code: sublayer_key,
@@ -101,7 +107,7 @@ export function createHyperSubLayer(
         },
       ],
       // This enables us to press other sublayer keys in the current sublayer
-      // (e.g. Hyper + O > M even though Hyper + M is also a sublayer)
+      // (e.g. LAYER + O > M even though LAYER + M is also a sublayer)
       // basically, only trigger a sublayer if no other sublayer is active
       conditions: [
         ...allSubLayerVariables
@@ -115,7 +121,7 @@ export function createHyperSubLayer(
           })),
         {
           type: "variable_if",
-          name: HYPER_VAR,
+          name: parentVariableName,
           value: VAR_ON,
         },
       ],
@@ -131,7 +137,7 @@ export function createHyperSubLayer(
             optional: ["any"],
           },
         },
-        // Only trigger this command if the variable is 1 (i.e., if Hyper + sublayer is held)
+        // Only trigger this command if the variable is 1 (i.e., if LAYER + sublayer is held)
         conditions: [
           {
             type: "variable_if",
@@ -145,21 +151,22 @@ export function createHyperSubLayer(
 }
 
 /**
- * Create all hyper sublayers. This needs to be a single function, as well need to
- * have all the hyper variable names in order to filter them and make sure only one
- * activates at a time
+ * Create sublayers for a given parent layer. This needs to be a single function, as we'll need to
+ * have all the variable names in order to filter them and make sure only one activates at a time
  */
-export function createHyperSubLayers(
-  subLayers: Partial<Record<KeyCode, HyperKeySublayer | LayerCommand>>
-): KarabinerRules[] {
+export function createSubLayers(
+  parentLayerName: string,
+  subLayers: Partial<Record<KeyCode, LayerKeySublayer | LayerCommand>>
+): Rule[] {
+  const parentVariableName = generateVariableName(parentLayerName);
   const allSubLayerVariables = (
     Object.keys(subLayers) as (keyof typeof subLayers)[]
-  ).map((sublayer_key) => generateSubLayerVariableName(sublayer_key));
+  ).map((sublayer_key) => generateVariableName(sublayer_key));
 
   return Object.entries(subLayers).map(([key, value]) =>
     "to" in value
       ? {
-          description: `Hyper Key + ${key}`,
+          description: `${parentLayerName} + ${key}`,
           manipulators: [
             {
               ...value,
@@ -173,7 +180,7 @@ export function createHyperSubLayers(
               conditions: [
                 {
                   type: "variable_if",
-                  name: HYPER_VAR,
+                  name: parentVariableName,
                   value: VAR_ON,
                 },
                 ...allSubLayerVariables.map((subLayerVariable) => ({
@@ -186,8 +193,9 @@ export function createHyperSubLayers(
           ],
         }
       : {
-          description: `Hyper Key sublayer "${key}"`,
-          manipulators: createHyperSubLayer(
+          description: `${parentLayerName} sublayer "${key}"`,
+          manipulators: createSubLayer(
+            parentLayerName,
             key as KeyCode,
             value,
             allSubLayerVariables
@@ -196,8 +204,8 @@ export function createHyperSubLayers(
   );
 }
 
-function generateSubLayerVariableName(key: KeyCode) {
-  return `hyper_sublayer_${key}`;
+function generateVariableName(keyOrName: KeyCode | string) {
+  return `${keyOrName}_pressed`;
 }
 
 /**

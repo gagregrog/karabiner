@@ -1,15 +1,22 @@
-import { KarabinerRules } from "./types";
+import { Rule } from "../types";
 import {
   app,
   open,
   rectangle,
-  initHyperKey,
-  createHyperSubLayers,
-} from "./utils";
+  createTrackedKey,
+  createSubLayers,
+} from "../utils";
 
-export const rules: KarabinerRules[] = [
-  initHyperKey(),
-  ...createHyperSubLayers({
+const FAUX_HYPER = "faux_hyper";
+
+export const capsLayers: Rule[] = [
+  createTrackedKey({
+    name: FAUX_HYPER,
+    description: "Faux Hyper Key",
+    fromKey: "caps_lock",
+    toIfAloneKey: "escape",
+  }),
+  ...createSubLayers(FAUX_HYPER, {
     spacebar: open(
       "raycast://extensions/stellate/mxstbr-commands/create-notion-todo"
     ),

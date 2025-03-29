@@ -1,4 +1,29 @@
-export interface KarabinerRules {
+export type Profile = {
+  name: string;
+  selected?: boolean;
+  complex_modifications?: {
+    rules: Rule[];
+  };
+  devices?: Device[];
+  virtual_hid_keyboard?: VirtualHidKeyboard;
+};
+
+export type Device = {
+  identifiers: Identifiers;
+  simple_modifications?: SimpleModification[];
+  ignore?: boolean;
+};
+
+export type SimpleModification = {
+  from: { key_code: KeyCode };
+  to: [{ key_code: KeyCode }];
+};
+
+export type VirtualHidKeyboard = {
+  keyboard_type_v2: "ansi";
+};
+
+export interface Rule {
   description?: string;
   manipulators?: Manipulator[];
 }
@@ -10,12 +35,15 @@ export interface Manipulator {
   to?: To[];
   to_after_key_up?: To[];
   to_if_alone?: To[];
+  to_if_held_down?: To[];
   parameters?: Parameters;
   conditions?: Conditions[];
 }
 
 export interface Parameters {
   "basic.simultaneous_threshold_milliseconds"?: number;
+  "basic.to_if_alone_timeout_milliseconds"?: number;
+  "basic.to_if_held_down_threshold_milliseconds"?: number;
 }
 
 type Conditions =

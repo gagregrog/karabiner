@@ -1,5 +1,5 @@
 import fs from "fs";
-import { rules } from "./src/rules";
+import { profiles } from "./src/profiles/index";
 
 const OUTFILE = "karabiner2.json";
 
@@ -10,14 +10,7 @@ fs.writeFileSync(
       global: {
         show_in_menu_bar: true,
       },
-      profiles: [
-        {
-          name: "Default",
-          complex_modifications: {
-            rules,
-          },
-        },
-      ],
+      profiles,
     },
     null,
     2
