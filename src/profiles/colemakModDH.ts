@@ -1,9 +1,9 @@
 import { capsControl } from "../rules/capsControl";
 import { commandCommand } from "../rules/commandCommmand";
-import { colemakModDH } from "../simpleModifications";
+import { colemakModDH as colemakModDHSimple } from "../simpleModifications";
 import { Profile } from "../types";
 
-export const ColemakModDH: Profile = {
+export const colemakModDH: Profile = {
   name: "Colemak Mod DH",
   selected: true,
   virtual_hid_keyboard: {
@@ -15,7 +15,7 @@ export const ColemakModDH: Profile = {
   devices: [
     {
       identifiers: { is_built_in_keyboard: true },
-      simple_modifications: colemakModDH,
+      simple_modifications: colemakModDHSimple,
     },
   ],
 };

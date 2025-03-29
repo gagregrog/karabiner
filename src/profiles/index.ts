@@ -1,4 +1,5 @@
 import { Profile } from "../types";
-import { ColemakModDH } from "./colemakModDH";
+import { colemakModDH } from "./colemakModDH";
+import { mxstbr } from "./mxstbr";
 
-export const profiles: Profile[] = [ColemakModDH];
+export const profiles: Profile[] = [colemakModDH, mxstbr];
