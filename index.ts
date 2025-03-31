@@ -1,7 +1,7 @@
 import fs from "fs";
 import { profiles } from "./src/profiles/index";
 
-const OUTFILE = "karabiner2.json";
+const OUTFILE = "karabiner.json";
 
 fs.writeFileSync(
   OUTFILE,

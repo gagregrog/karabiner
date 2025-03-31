@@ -46,7 +46,7 @@ export interface Parameters {
   "basic.to_if_held_down_threshold_milliseconds"?: number;
 }
 
-type Conditions =
+export type Conditions =
   | FrontMostApplicationCondition
   | DeviceCondition
   | KeybaordTypeCondition
@@ -121,7 +121,7 @@ export interface SimultaneousOptions {
   detect_key_down_uninterruptedly?: boolean;
 }
 
-type ModifiersKeys =
+export type ModifiersKeys =
   | "caps_lock"
   | "left_command"
   | "left_control"

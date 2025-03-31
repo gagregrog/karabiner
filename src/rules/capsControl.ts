@@ -1,13 +1,16 @@
-import { Rule } from "../types";
-import { createTrackedKey } from "../utils";
+import { KeyCode, Manipulator, ModifiersKeys, Rule } from "../types";
+import { createTrackedKey, trackedKeyActive } from "../utils";
+
+const modName = "caps_control";
+const heldKey = "left_control" as const;
 
 const trackedControl = createTrackedKey({
   description:
     "Change capslock to left_ctrl. Post escape if pressed alone, backspace with space, MNEI to HJKL when caps_lock held, n to command+shift+delete when left shift held",
-  name: "caps_control",
+  name: modName,
   fromKey: "caps_lock",
   toIfAloneKey: "escape",
-  toIfHeldKey: "left_control",
+  toIfHeldKey: heldKey,
   parameters: {
     "basic.to_if_alone_timeout_milliseconds": 100,
     "basic.to_if_held_down_threshold_milliseconds": 100,
@@ -18,100 +21,44 @@ export const capsControl: Rule = {
   ...trackedControl,
   manipulators: [
     ...trackedControl.manipulators,
-    {
-      conditions: [
-        {
-          name: "caps_lock_pressed",
-          type: "variable_if",
-          value: 1,
-        },
-      ],
-      from: {
-        key_code: "n",
-        modifiers: { mandatory: ["left_control", "left_shift"] },
-      },
-      to: [
-        {
-          key_code: "delete_or_backspace",
-          modifiers: ["left_shift", "left_command"],
-        },
-      ],
-      type: "basic",
-    },
-    {
-      conditions: [
-        {
-          name: "caps_lock_pressed",
-          type: "variable_if",
-          value: 1,
-        },
-      ],
-      from: {
-        key_code: "spacebar",
-        modifiers: { mandatory: ["left_control"] },
-      },
-      to: [{ key_code: "delete_or_backspace" }],
-      type: "basic",
-    },
-    {
-      conditions: [
-        {
-          name: "caps_lock_pressed",
-          type: "variable_if",
-          value: 1,
-        },
-      ],
-      from: {
-        key_code: "m",
-        modifiers: { mandatory: ["left_control"] },
-      },
-      to: [{ key_code: "h" }],
-      type: "basic",
-    },
-    {
-      conditions: [
-        {
-          name: "caps_lock_pressed",
-          type: "variable_if",
-          value: 1,
-        },
-      ],
-      from: {
-        key_code: "n",
-        modifiers: { mandatory: ["left_control"] },
-      },
-      to: [{ key_code: "j" }],
-      type: "basic",
-    },
-    {
-      conditions: [
-        {
-          name: "caps_lock_pressed",
-          type: "variable_if",
-          value: 1,
-        },
-      ],
-      from: {
-        key_code: "e",
-        modifiers: { mandatory: ["left_control"] },
-      },
-      to: [{ key_code: "k" }],
-      type: "basic",
-    },
-    {
-      conditions: [
-        {
-          name: "caps_lock_pressed",
-          type: "variable_if",
-          value: 1,
-        },
-      ],
-      from: {
-        key_code: "i",
-        modifiers: { mandatory: ["left_control"] },
-      },
-      to: [{ key_code: "l" }],
-      type: "basic",
-    },
+    // note that these remappings occur *after* simple modification remappings, so "n" is actually "j" if QWERTY remapped to ColemakDH
+    remap("n", "delete_or_backspace", {
+      description: "Activate Homerow.app scrolling",
+      fromModifiers: ["left_shift"],
+      toModifiers: ["left_shift", "left_command"],
+    }),
+    remap("spacebar", "delete_or_backspace"),
+    remap("m", "h"),
+    remap("n", "j"),
+    remap("e", "k"),
+    remap("i", "l"),
   ],
 };
+
+/**
+ * Remap a key while the caps_control modifier is active
+ */
+function remap(
+  fromKey: KeyCode,
+  toKey: KeyCode,
+  {
+    description = "",
+    fromModifiers = [],
+    toModifiers = [],
+  }: {
+    description?: string;
+    fromModifiers?: ModifiersKeys[];
+    toModifiers?: ModifiersKeys[];
+  } = {}
+): Manipulator {
+  return {
+    description: description || `${fromKey} -> ${toKey}`,
+    conditions: trackedKeyActive(modName),
+    from: {
+      key_code: fromKey,
+      modifiers: { mandatory: [heldKey, ...fromModifiers] },
+    },
+    to: [{ key_code: toKey, modifiers: toModifiers }],
+    type: "basic",
+  };
+}

@@ -14,7 +14,7 @@ export const colemakModDH: Profile = {
   },
   devices: [
     {
-      identifiers: { is_built_in_keyboard: true },
+      identifiers: { is_keyboard: true },
       simple_modifications: colemakModDHSimple,
     },
   ],

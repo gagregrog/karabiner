@@ -1,5 +1,12 @@
 import { VAR_OFF, VAR_ON } from "./constants";
-import { To, KeyCode, Manipulator, Rule, Parameters } from "./types";
+import {
+  To,
+  KeyCode,
+  Manipulator,
+  Rule,
+  Parameters,
+  Conditions,
+} from "./types";
 
 /**
  * Modify and track a keypress
@@ -206,6 +213,16 @@ export function createSubLayers(
 
 function generateVariableName(keyOrName: KeyCode | string) {
   return `${keyOrName}_pressed`;
+}
+
+export function trackedKeyActive(name: string): Conditions[] {
+  return [
+    {
+      name: generateVariableName(name),
+      type: "variable_if",
+      value: VAR_ON,
+    },
+  ];
 }
 
 /**
