@@ -1,5 +1,11 @@
 import { SimpleModification } from "./types";
 
+export const MAC_ID = {
+  is_keyboard: true,
+  product_id: 632,
+  vendor_id: 1452,
+};
+
 export const colemakModDH: SimpleModification[] = [
   {
     from: { key_code: "b" },

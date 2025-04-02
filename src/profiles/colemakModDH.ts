@@ -1,7 +1,10 @@
 import { capsControl } from "../rules/capsControl";
 import { capsLayers } from "../rules/capsLayers";
 import { commandCommand } from "../rules/commandCommmand";
-import { colemakModDH as colemakModDHSimple } from "../simpleModifications";
+import {
+  colemakModDH as colemakModDHSimple,
+  MAC_ID,
+} from "../simpleModifications";
 import { Profile } from "../types";
 
 export const colemakModDH: Profile = {
@@ -15,7 +18,7 @@ export const colemakModDH: Profile = {
   },
   devices: [
     {
-      identifiers: { is_keyboard: true },
+      identifiers: MAC_ID,
       simple_modifications: colemakModDHSimple,
     },
   ],
