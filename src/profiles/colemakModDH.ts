@@ -3,7 +3,8 @@ import { capsLayers } from "../rules/capsLayers";
 import { commandCommand } from "../rules/commandCommmand";
 import {
   colemakModDH as colemakModDHSimple,
-  MAC_ID,
+  INTEL_MAC_ID,
+  SILICONE_MAC_ID,
 } from "../simpleModifications";
 import { Profile } from "../types";
 
@@ -18,7 +19,11 @@ export const colemakModDH: Profile = {
   },
   devices: [
     {
-      identifiers: MAC_ID,
+      identifiers: INTEL_MAC_ID,
+      simple_modifications: colemakModDHSimple,
+    },
+    {
+      identifiers: SILICONE_MAC_ID,
       simple_modifications: colemakModDHSimple,
     },
   ],
