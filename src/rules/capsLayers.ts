@@ -2,133 +2,86 @@ import { Rule } from "../types";
 import {
   app,
   open,
-  rectangle,
   createTrackedKey,
   createSubLayers,
+  windex,
+  to,
 } from "../utils";
 
-const FAUX_HYPER = "faux_hyper";
+const LAYERS = "layers";
 
 export const capsLayers: Rule[] = [
   createTrackedKey({
-    name: FAUX_HYPER,
-    description: "Faux Hyper Key",
-    fromKey: "caps_lock",
-    toIfAloneKey: "escape",
+    name: LAYERS,
+    description: "Layers",
+    fromKey: "spacebar",
+    toIfAloneKey: "spacebar",
   }),
-  ...createSubLayers(FAUX_HYPER, {
-    spacebar: open(
-      "raycast://extensions/stellate/mxstbr-commands/create-notion-todo"
-    ),
+  ...createSubLayers(LAYERS, {
     // b = "B"rowse
     b: {
-      t: open("https://twitter.com"),
-      // Quarterly "P"lan
-      p: open("https://mxstbr.com/cal"),
-      y: open("https://news.ycombinator.com"),
-      f: open("https://facebook.com"),
-      r: open("https://reddit.com"),
-      h: open("https://hashnode.com/draft"),
+      8: open("https://localhost:8000"),
+      9: open("https://localhost:9000"),
+      g: open("https://github.com"),
     },
     // o = "Open" applications
     o: {
       1: app("1Password"),
-      g: app("Google Chrome"),
-      c: app("Notion Calendar"),
-      v: app("Zed"),
-      d: app("Discord"),
+      a: app("Arc"),
       s: app("Slack"),
-      e: app("Superhuman"),
       n: app("Notion"),
-      t: app("Terminal"),
-      // Open todo list managed via *H*ypersonic
-      h: open(
-        "notion://www.notion.so/stellatehq/7b33b924746647499d906c55f89d5026"
-      ),
+      t: app("Alacritty"),
       z: app("zoom.us"),
-      // "M"arkdown (Reflect.app)
-      m: app("Reflect"),
-      r: app("Reflect"),
       f: app("Finder"),
-      // "i"Message
-      i: app("Texts"),
-      p: app("Spotify"),
-      a: app("iA Presenter"),
-      // "W"hatsApp has been replaced by Texts
-      w: open("Texts"),
-      l: open(
-        "raycast://extensions/stellate/mxstbr-commands/open-mxs-is-shortlink"
-      ),
+      y: app("YT Music"),
     },
 
-    // w = "Window" via rectangle.app
+    // w = "Window"
     w: {
-      semicolon: {
-        description: "Window: Hide",
-        to: [
-          {
-            key_code: "h",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
-      y: rectangle("previous-display"),
-      o: rectangle("next-display"),
-      k: rectangle("top-half"),
-      j: rectangle("bottom-half"),
-      h: rectangle("left-half"),
-      l: rectangle("right-half"),
-      f: rectangle("maximize"),
-      u: {
-        description: "Window: Previous Tab",
-        to: [
-          {
-            key_code: "tab",
-            modifiers: ["right_control", "right_shift"],
-          },
-        ],
-      },
-      i: {
-        description: "Window: Next Tab",
-        to: [
-          {
-            key_code: "tab",
-            modifiers: ["right_control"],
-          },
-        ],
-      },
-      n: {
-        description: "Window: Next Window",
-        to: [
-          {
-            key_code: "grave_accent_and_tilde",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
-      b: {
-        description: "Window: Back",
-        to: [
-          {
-            key_code: "open_bracket",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
-      // Note: No literal connection. Both f and n are already taken.
-      m: {
-        description: "Window: Forward",
-        to: [
-          {
-            key_code: "close_bracket",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
+      u: windex("up_arrow"),
+      n: windex("left_arrow"),
+      e: windex("down_arrow"),
+      i: windex("right_arrow"),
+      f: windex("return_or_enter", "Fullscreen"),
+      return_or_enter: windex("return_or_enter", "Fullscreen"),
+      y: windex("f15", "Upper Right"),
+      o: windex("f16", "Lower Right"),
+      l: windex("f17", "Upper Left"),
+      m: windex("f18", "Lower Left"),
+    },
+
+    // d = "Digits" = numpad
+    d: {
+      period: to("0"),
+      k: to("1"),
+      h: to("2"),
+      comma: to("3"),
+      n: to("4"),
+      e: to("5"),
+      i: to("6"),
+      l: to("7"),
+      u: to("8"),
+      y: to("9"),
     },
 
     // s = "System"
     s: {
+      l: {
+        description: "Lock the computer with spacebar + s + l",
+        to: [
+          {
+            key_code: "q",
+            modifiers: ["right_control", "right_command"],
+          },
+        ],
+      },
+      m: {
+        to: [
+          {
+            key_code: "play_or_pause",
+          },
+        ],
+      },
       u: {
         to: [
           {
@@ -136,7 +89,7 @@ export const capsLayers: Rule[] = [
           },
         ],
       },
-      j: {
+      e: {
         to: [
           {
             key_code: "volume_decrement",
@@ -146,112 +99,28 @@ export const capsLayers: Rule[] = [
       i: {
         to: [
           {
-            key_code: "display_brightness_increment",
-          },
-        ],
-      },
-      k: {
-        to: [
-          {
-            key_code: "display_brightness_decrement",
-          },
-        ],
-      },
-      l: {
-        to: [
-          {
-            key_code: "q",
-            modifiers: ["right_control", "right_command"],
-          },
-        ],
-      },
-      p: {
-        to: [
-          {
-            key_code: "play_or_pause",
-          },
-        ],
-      },
-      semicolon: {
-        to: [
-          {
             key_code: "fastforward",
           },
         ],
       },
-      e: open(
-        `raycast://extensions/thomas/elgato-key-light/toggle?launchType=background`
-      ),
-      // "D"o not disturb toggle
-      d: open(
-        `raycast://extensions/yakitrak/do-not-disturb/toggle?launchType=background`
-      ),
-      // "T"heme
-      t: open(`raycast://extensions/raycast/system/toggle-system-appearance`),
-      c: open("raycast://extensions/raycast/system/open-camera"),
-      // 'v'oice
-      v: {
+      n: {
         to: [
           {
-            key_code: "spacebar",
-            modifiers: ["left_option"],
+            key_code: "rewind",
           },
         ],
-      },
-    },
-
-    // v = "moVe" which isn't "m" because we want it to be on the left hand
-    // so that hjkl work like they do in vim
-    v: {
-      h: {
-        to: [{ key_code: "left_arrow" }],
-      },
-      j: {
-        to: [{ key_code: "down_arrow" }],
-      },
-      k: {
-        to: [{ key_code: "up_arrow" }],
-      },
-      l: {
-        to: [{ key_code: "right_arrow" }],
-      },
-      // Magicmove via homerow.app
-      m: {
-        to: [{ key_code: "f", modifiers: ["right_control"] }],
-        // TODO: Trigger Vim Easymotion when VSCode is focused
-      },
-      // Scroll mode via homerow.app
-      s: {
-        to: [{ key_code: "j", modifiers: ["right_control"] }],
-      },
-      d: {
-        to: [{ key_code: "d", modifiers: ["right_shift", "right_command"] }],
-      },
-      u: {
-        to: [{ key_code: "page_down" }],
-      },
-      i: {
-        to: [{ key_code: "page_up" }],
-      },
-    },
-
-    // c = Musi*c* which isn't "m" because we want it to be on the left hand
-    c: {
-      p: {
-        to: [{ key_code: "play_or_pause" }],
-      },
-      n: {
-        to: [{ key_code: "fastforward" }],
-      },
-      b: {
-        to: [{ key_code: "rewind" }],
       },
     },
 
     // r = "Raycast"
     r: {
+      y: open("raycast://confetti"),
       c: open("raycast://extensions/thomas/color-picker/pick-color"),
       n: open("raycast://script-commands/dismiss-notifications"),
+      f: open("raycast://script-commands/copy-focused-finder-window-path"),
+      j: open("raycast://script-commands/decode-jwt"),
+      a: open("raycast://script-commands/view-scripting-dictionary"),
+      m: open("raycast://script-commands/toggle-mic"),
       l: open(
         "raycast://extensions/stellate/mxstbr-commands/create-mxs-is-shortlink"
       ),
@@ -259,41 +128,11 @@ export const capsLayers: Rule[] = [
         "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
       ),
       p: open("raycast://extensions/raycast/raycast/confetti"),
-      a: open("raycast://extensions/raycast/raycast-ai/ai-chat"),
-      s: open("raycast://extensions/peduarte/silent-mention/index"),
+      // a: open("raycast://extensions/raycast/raycast-ai/ai-chat"),
+      // s: open("raycast://extensions/peduarte/silent-mention/index"),
       h: open(
         "raycast://extensions/raycast/clipboard-history/clipboard-history"
       ),
-      1: open(
-        "raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-1"
-      ),
-      2: open(
-        "raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-2"
-      ),
     },
   }),
-  {
-    description: "Change Backspace to Spacebar when Minecraft is focused",
-    manipulators: [
-      {
-        type: "basic",
-        from: {
-          key_code: "delete_or_backspace",
-        },
-        to: [
-          {
-            key_code: "spacebar",
-          },
-        ],
-        conditions: [
-          {
-            type: "frontmost_application_if",
-            file_paths: [
-              "^/Users/mxstbr/Library/Application Support/minecraft/runtime/java-runtime-gamma/mac-os-arm64/java-runtime-gamma/jre.bundle/Contents/Home/bin/java$",
-            ],
-          },
-        ],
-      },
-    ],
-  },
 ];

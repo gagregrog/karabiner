@@ -263,16 +263,34 @@ export function shell(
 }
 
 /**
- * Shortcut for managing window sizing with Rectangle
+ * Shortcut for managing window sizing with Windex
  */
-export function rectangle(name: string): LayerCommand {
+export function windex(key: KeyCode, name?: string): LayerCommand {
   return {
+    description: `Window Split ${
+      name ||
+      key
+        .split("_")[0]
+        .split("")
+        .map((char, i) => (i ? char : char.toUpperCase()))
+        .join("")
+    }`,
     to: [
       {
-        shell_command: `open -g rectangle://execute-action?name=${name}`,
+        key_code: key,
+        modifiers: ["left_control", "left_alt", "left_gui"],
       },
     ],
-    description: `Window: ${name}`,
+  };
+}
+
+/**
+ * Simple remap from one key to another for sublayers
+ */
+export function to(keyCode: KeyCode): LayerCommand {
+  return {
+    description: `To ${keyCode}`,
+    to: [{ key_code: keyCode }],
   };
 }
 

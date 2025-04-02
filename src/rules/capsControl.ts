@@ -28,10 +28,10 @@ export const capsControl: Rule = {
       toModifiers: ["left_shift", "left_command"],
     }),
     remap("spacebar", "delete_or_backspace"),
-    remap("m", "h"),
-    remap("n", "j"),
-    remap("e", "k"),
-    remap("i", "l"),
+    remap("m", "left_arrow"),
+    remap("n", "down_arrow"),
+    remap("e", "up_arrow"),
+    remap("i", "right_arrow"),
   ],
 };
 
