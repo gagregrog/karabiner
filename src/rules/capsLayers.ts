@@ -18,6 +18,11 @@ export const capsLayers: Rule[] = [
     toIfAloneKey: "spacebar",
   }),
   ...createSubLayers(LAYERS, {
+    // movement keys for right hand
+    m: to("left_arrow"),
+    n: to("down_arrow"),
+    e: to("up_arrow"),
+    i: to("right_arrow"),
     // b = "B"rowse
     b: {
       8: open("https://localhost:8000"),
@@ -121,17 +126,8 @@ export const capsLayers: Rule[] = [
       j: open("raycast://script-commands/decode-jwt"),
       a: open("raycast://script-commands/view-scripting-dictionary"),
       m: open("raycast://script-commands/toggle-mic"),
-      l: open(
-        "raycast://extensions/stellate/mxstbr-commands/create-mxs-is-shortlink"
-      ),
       e: open(
         "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
-      ),
-      p: open("raycast://extensions/raycast/raycast/confetti"),
-      // a: open("raycast://extensions/raycast/raycast-ai/ai-chat"),
-      // s: open("raycast://extensions/peduarte/silent-mention/index"),
-      h: open(
-        "raycast://extensions/raycast/clipboard-history/clipboard-history"
       ),
     },
   }),

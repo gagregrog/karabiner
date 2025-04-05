@@ -57,65 +57,6 @@
                 "type": "basic"
               },
               {
-                "description": "Activate Homerow.app scrolling",
-                "conditions": [
-                  {
-                    "name": "caps_control_pressed",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "n",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_control",
-                      "left_shift"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "delete_or_backspace",
-                    "modifiers": [
-                      "left_shift",
-                      "left_command"
-                    ]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "description": "Activate Homerow.app click",
-                "conditions": [
-                  {
-                    "name": "caps_control_pressed",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "e",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_control",
-                      "left_shift"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "delete_or_backspace",
-                    "modifiers": [
-                      "left_alt",
-                      "left_shift",
-                      "left_command"
-                    ]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
                 "description": "m -> left_arrow",
                 "conditions": [
                   {
@@ -299,6 +240,322 @@
             ]
           },
           {
+            "description": "layers + m",
+            "manipulators": [
+              {
+                "description": "To left_arrow",
+                "to": [
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "layers + n",
+            "manipulators": [
+              {
+                "description": "To down_arrow",
+                "to": [
+                  {
+                    "key_code": "down_arrow"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "layers + e",
+            "manipulators": [
+              {
+                "description": "To up_arrow",
+                "to": [
+                  {
+                    "key_code": "up_arrow"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "layers + i",
+            "manipulators": [
+              {
+                "description": "To right_arrow",
+                "to": [
+                  {
+                    "key_code": "right_arrow"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "layers sublayer \"b\"",
             "manipulators": [
               {
@@ -329,6 +586,26 @@
                   }
                 ],
                 "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
                   {
                     "type": "variable_if",
                     "name": "o_pressed",
@@ -466,6 +743,26 @@
                   }
                 ],
                 "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
                   {
                     "type": "variable_if",
                     "name": "b_pressed",
@@ -723,6 +1020,26 @@
                   }
                 ],
                 "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
                   {
                     "type": "variable_if",
                     "name": "b_pressed",
@@ -1080,6 +1397,26 @@
                 "conditions": [
                   {
                     "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -1385,6 +1722,26 @@
                 "conditions": [
                   {
                     "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -1593,6 +1950,26 @@
                 "conditions": [
                   {
                     "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -1794,30 +2171,6 @@
               {
                 "to": [
                   {
-                    "shell_command": "open raycast://extensions/stellate/mxstbr-commands/create-mxs-is-shortlink"
-                  }
-                ],
-                "description": "Open raycast://extensions/stellate/mxstbr-commands/create-mxs-is-shortlink",
-                "type": "basic",
-                "from": {
-                  "key_code": "l",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "r_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
                     "shell_command": "open raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
                   }
                 ],
@@ -1825,54 +2178,6 @@
                 "type": "basic",
                 "from": {
                   "key_code": "e",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "r_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open raycast://extensions/raycast/raycast/confetti"
-                  }
-                ],
-                "description": "Open raycast://extensions/raycast/raycast/confetti",
-                "type": "basic",
-                "from": {
-                  "key_code": "p",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "r_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open raycast://extensions/raycast/clipboard-history/clipboard-history"
-                  }
-                ],
-                "description": "Open raycast://extensions/raycast/clipboard-history/clipboard-history",
-                "type": "basic",
-                "from": {
-                  "key_code": "h",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -1911,7 +2216,8 @@
                 },
                 "to": [
                   {
-                    "key_code": "right_shift"
+                    "key_code": "right_shift",
+                    "modifiers": []
                   }
                 ],
                 "parameters": {
@@ -1938,7 +2244,8 @@
                 },
                 "to": [
                   {
-                    "key_code": "right_command"
+                    "key_code": "right_command",
+                    "modifiers": []
                   }
                 ],
                 "parameters": {
@@ -1965,7 +2272,8 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_shift"
+                    "key_code": "left_shift",
+                    "modifiers": []
                   }
                 ],
                 "parameters": {
@@ -1992,7 +2300,127 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_command"
+                    "key_code": "left_command",
+                    "modifiers": []
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
+                "description": "n + u -> left_control",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "n"
+                    },
+                    {
+                      "key_code": "u"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_control",
+                    "modifiers": []
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
+                "description": "u + y -> left_alt",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "u"
+                    },
+                    {
+                      "key_code": "y"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_alt",
+                    "modifiers": []
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
+                "description": "n + i -> delete_or_backspace + left_alt + left_shift + left_command",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "n"
+                    },
+                    {
+                      "key_code": "i"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_or_backspace",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_command"
+                    ]
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
+                "description": "r + t -> delete_or_backspace + left_shift + left_command",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "r"
+                    },
+                    {
+                      "key_code": "t"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_or_backspace",
+                    "modifiers": [
+                      "left_shift",
+                      "left_command"
+                    ]
                   }
                 ],
                 "parameters": {
