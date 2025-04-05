@@ -163,6 +163,7 @@ export interface To {
     value: boolean | number | string;
   };
   mouse_key?: MouseKey;
+  halt?: boolean;
   pointing_button?: string;
   /**
    * Power Management plugin

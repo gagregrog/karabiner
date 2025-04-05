@@ -86,7 +86,7 @@
                 "type": "basic"
               },
               {
-                "description": "spacebar -> delete_or_backspace",
+                "description": "Activate Homerow.app click",
                 "conditions": [
                   {
                     "name": "caps_control_pressed",
@@ -95,17 +95,22 @@
                   }
                 ],
                 "from": {
-                  "key_code": "spacebar",
+                  "key_code": "e",
                   "modifiers": {
                     "mandatory": [
-                      "left_control"
+                      "left_control",
+                      "left_shift"
                     ]
                   }
                 },
                 "to": [
                   {
                     "key_code": "delete_or_backspace",
-                    "modifiers": []
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_command"
+                    ]
                   }
                 ],
                 "type": "basic"

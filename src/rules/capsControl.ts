@@ -27,7 +27,12 @@ export const capsControl: Rule = {
       fromModifiers: ["left_shift"],
       toModifiers: ["left_shift", "left_command"],
     }),
-    remap("spacebar", "delete_or_backspace"),
+    remap("e", "delete_or_backspace", {
+      description: "Activate Homerow.app click",
+      fromModifiers: ["left_shift"],
+      toModifiers: ["left_alt", "left_shift", "left_command"],
+    }),
+    // remap("spacebar", "delete_or_backspace"),
     remap("m", "left_arrow"),
     remap("n", "down_arrow"),
     remap("e", "up_arrow"),
