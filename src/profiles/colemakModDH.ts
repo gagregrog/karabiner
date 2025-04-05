@@ -1,5 +1,6 @@
 import { capsControl } from "../rules/capsControl";
 import { capsLayers } from "../rules/capsLayers";
+import { chords } from "../rules/chords";
 import { commandCommand } from "../rules/commandCommmand";
 import {
   colemakModDH as colemakModDHSimple,
@@ -15,7 +16,7 @@ export const colemakModDH: Profile = {
     keyboard_type_v2: "ansi",
   },
   complex_modifications: {
-    rules: [capsControl, commandCommand, ...capsLayers],
+    rules: [capsControl, commandCommand, ...capsLayers, chords],
   },
   devices: [
     {

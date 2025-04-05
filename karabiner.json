@@ -1888,6 +1888,119 @@
                 ]
               }
             ]
+          },
+          {
+            "description": "Home Row Mods",
+            "manipulators": [
+              {
+                "description": "n + e -> right_shift",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "n"
+                    },
+                    {
+                      "key_code": "e"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_shift"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
+                "description": "e + i -> right_command",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "e"
+                    },
+                    {
+                      "key_code": "i"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_command"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
+                "description": "s + t -> left_shift",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "s"
+                    },
+                    {
+                      "key_code": "t"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_shift"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
+                "description": "s + r -> left_command",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "s"
+                    },
+                    {
+                      "key_code": "r"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command"
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
