@@ -63,7 +63,7 @@ export function createTrackedKey({
 /**
  * Custom way to describe a command in a layer
  */
-interface LayerCommand {
+export interface LayerCommand {
   to: To[];
   description?: string;
 }
@@ -263,34 +263,26 @@ export function shell(
 }
 
 /**
- * Shortcut for managing window sizing with Windex
- */
-export function windex(key: KeyCode, name?: string): LayerCommand {
-  return {
-    description: `Window Split ${
-      name ||
-      key
-        .split("_")[0]
-        .split("")
-        .map((char, i) => (i ? char : char.toUpperCase()))
-        .join("")
-    }`,
-    to: [
-      {
-        key_code: key,
-        modifiers: ["left_control", "left_alt", "left_gui"],
-      },
-    ],
-  };
-}
-
-/**
- * Simple remap from one key to another for sublayers
+ * Simple remap from one key to another
  */
 export function to(keyCode: KeyCode): LayerCommand {
   return {
     description: `To ${keyCode}`,
     to: [{ key_code: keyCode }],
+  };
+}
+
+/**
+ * Simple remap from one key to another if held
+ */
+export function toIfHeld(
+  fromKeyCode: KeyCode,
+  toKeyCode: KeyCode
+): LayerCommand {
+  return {
+    description: `${fromKeyCode} if pressed, ${toKeyCode} if held`,
+    to: [{ key_code: fromKeyCode }],
+    to_if_held_down: [{ key_code: toKeyCode }],
   };
 }
 

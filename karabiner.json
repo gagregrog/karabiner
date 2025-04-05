@@ -804,7 +804,7 @@
                 "description": "Open -a '1Password.app'",
                 "type": "basic",
                 "from": {
-                  "key_code": "1",
+                  "key_code": "p",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -829,6 +829,30 @@
                 "type": "basic",
                 "from": {
                   "key_code": "a",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'Brave Browser.app'"
+                  }
+                ],
+                "description": "Open -a 'Brave Browser.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "b",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -1073,7 +1097,7 @@
                 ]
               },
               {
-                "description": "Window Split Up",
+                "description": "Upper Half",
                 "to": [
                   {
                     "key_code": "up_arrow",
@@ -1102,7 +1126,7 @@
                 ]
               },
               {
-                "description": "Window Split Left",
+                "description": "Left Half",
                 "to": [
                   {
                     "key_code": "left_arrow",
@@ -1131,7 +1155,7 @@
                 ]
               },
               {
-                "description": "Window Split Down",
+                "description": "Lower Half",
                 "to": [
                   {
                     "key_code": "down_arrow",
@@ -1144,7 +1168,7 @@
                 ],
                 "type": "basic",
                 "from": {
-                  "key_code": "e",
+                  "key_code": "comma",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -1160,7 +1184,7 @@
                 ]
               },
               {
-                "description": "Window Split Right",
+                "description": "Right Half",
                 "to": [
                   {
                     "key_code": "right_arrow",
@@ -1189,7 +1213,7 @@
                 ]
               },
               {
-                "description": "Window Split Fullscreen",
+                "description": "Fullscreen",
                 "to": [
                   {
                     "key_code": "return_or_enter",
@@ -1202,7 +1226,7 @@
                 ],
                 "type": "basic",
                 "from": {
-                  "key_code": "f",
+                  "key_code": "e",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -1218,7 +1242,7 @@
                 ]
               },
               {
-                "description": "Window Split Fullscreen",
+                "description": "Fullscreen",
                 "to": [
                   {
                     "key_code": "return_or_enter",
@@ -1247,7 +1271,7 @@
                 ]
               },
               {
-                "description": "Window Split Upper Right",
+                "description": "Upper Right",
                 "to": [
                   {
                     "key_code": "f15",
@@ -1276,7 +1300,7 @@
                 ]
               },
               {
-                "description": "Window Split Lower Right",
+                "description": "Lower Right",
                 "to": [
                   {
                     "key_code": "f16",
@@ -1289,7 +1313,7 @@
                 ],
                 "type": "basic",
                 "from": {
-                  "key_code": "o",
+                  "key_code": "period",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -1305,7 +1329,7 @@
                 ]
               },
               {
-                "description": "Window Split Upper Left",
+                "description": "Upper Left",
                 "to": [
                   {
                     "key_code": "f17",
@@ -1334,7 +1358,7 @@
                 ]
               },
               {
-                "description": "Window Split Lower Left",
+                "description": "Lower Left",
                 "to": [
                   {
                     "key_code": "f18",
@@ -1347,7 +1371,171 @@
                 ],
                 "type": "basic",
                 "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai toggle float",
+                "to": [
+                  {
+                    "key_code": "t",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "delete_or_backspace",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai toggle managed mode",
+                "to": [
+                  {
+                    "key_code": "t",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
                   "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus previous window",
+                "to": [
+                  {
+                    "key_code": "p",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus next window",
+                "to": [
+                  {
+                    "key_code": "n",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus next managed window",
+                "to": [
+                  {
+                    "key_code": "f",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus previous managed window",
+                "to": [
+                  {
+                    "key_code": "f",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "k",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -2254,6 +2442,62 @@
                 "type": "basic"
               },
               {
+                "description": "l + u -> right_alt",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "l"
+                    },
+                    {
+                      "key_code": "u"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_alt",
+                    "modifiers": []
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
+                "description": "u + y -> right_control",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "u"
+                    },
+                    {
+                      "key_code": "y"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_control",
+                    "modifiers": []
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
                 "description": "s + t -> left_shift",
                 "from": {
                   "simultaneous": [
@@ -2310,42 +2554,14 @@
                 "type": "basic"
               },
               {
-                "description": "n + u -> left_control",
+                "description": "f + p -> left_alt",
                 "from": {
                   "simultaneous": [
                     {
-                      "key_code": "n"
+                      "key_code": "f"
                     },
                     {
-                      "key_code": "u"
-                    }
-                  ],
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_control",
-                    "modifiers": []
-                  }
-                ],
-                "parameters": {
-                  "basic.simultaneous_threshold_milliseconds": 50
-                },
-                "type": "basic"
-              },
-              {
-                "description": "u + y -> left_alt",
-                "from": {
-                  "simultaneous": [
-                    {
-                      "key_code": "u"
-                    },
-                    {
-                      "key_code": "y"
+                      "key_code": "p"
                     }
                   ],
                   "modifiers": {
@@ -2366,14 +2582,42 @@
                 "type": "basic"
               },
               {
-                "description": "n + i -> delete_or_backspace + left_alt + left_shift + left_command",
+                "description": "w + f -> left_control",
                 "from": {
                   "simultaneous": [
                     {
-                      "key_code": "n"
+                      "key_code": "w"
                     },
                     {
-                      "key_code": "i"
+                      "key_code": "f"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_control",
+                    "modifiers": []
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 50
+                },
+                "type": "basic"
+              },
+              {
+                "description": "s + e -> delete_or_backspace + left_alt + left_shift + left_command",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "s"
+                    },
+                    {
+                      "key_code": "e"
                     }
                   ],
                   "modifiers": {
@@ -2398,14 +2642,14 @@
                 "type": "basic"
               },
               {
-                "description": "r + t -> delete_or_backspace + left_shift + left_command",
+                "description": "t + n -> delete_or_backspace + left_shift + left_command",
                 "from": {
                   "simultaneous": [
                     {
-                      "key_code": "r"
+                      "key_code": "t"
                     },
                     {
-                      "key_code": "t"
+                      "key_code": "n"
                     }
                   ],
                   "modifiers": {

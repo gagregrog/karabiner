@@ -16,7 +16,7 @@ export const colemakModDH: Profile = {
     keyboard_type_v2: "ansi",
   },
   complex_modifications: {
-    rules: [capsControl, commandCommand, ...capsLayers, chords],
+    rules: [capsControl, commandCommand, capsLayers, chords].flat(),
   },
   devices: [
     {

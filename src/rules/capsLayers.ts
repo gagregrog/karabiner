@@ -1,12 +1,6 @@
+import { addMods, alt, lcag } from "../mods";
 import { Rule } from "../types";
-import {
-  app,
-  open,
-  createTrackedKey,
-  createSubLayers,
-  windex,
-  to,
-} from "../utils";
+import { app, open, createTrackedKey, createSubLayers, to } from "../utils";
 
 const LAYERS = "layers";
 
@@ -31,8 +25,9 @@ export const capsLayers: Rule[] = [
     },
     // o = "Open" applications
     o: {
-      1: app("1Password"),
+      p: app("1Password"),
       a: app("Arc"),
+      b: app("Brave Browser"),
       s: app("Slack"),
       n: app("Notion"),
       t: app("Alacritty"),
@@ -43,16 +38,29 @@ export const capsLayers: Rule[] = [
 
     // w = "Window"
     w: {
-      u: windex("up_arrow"),
-      n: windex("left_arrow"),
-      e: windex("down_arrow"),
-      i: windex("right_arrow"),
-      f: windex("return_or_enter", "Fullscreen"),
-      return_or_enter: windex("return_or_enter", "Fullscreen"),
-      y: windex("f15", "Upper Right"),
-      o: windex("f16", "Lower Right"),
-      l: windex("f17", "Upper Left"),
-      m: windex("f18", "Lower Left"),
+      // ** keybinds/functions managed by hammerspoon.Windex
+      u: lcag("up_arrow", "Upper Half"),
+      n: lcag("left_arrow", "Left Half"),
+      comma: lcag("down_arrow", "Lower Half"),
+      i: lcag("right_arrow", "Right Half"),
+      e: lcag("return_or_enter", "Fullscreen"),
+      return_or_enter: lcag("return_or_enter", "Fullscreen"),
+      y: lcag("f15", "Upper Right"),
+      period: lcag("f16", "Lower Right"),
+      l: lcag("f17", "Upper Left"),
+      h: lcag("f18", "Lower Left"),
+      // ** keybinds managed by skhd
+      // ** functions managed by yabai and yabai.sh
+      delete_or_backspace: alt("t", "Yabai toggle float"),
+      m: addMods("t", ["left_alt", "left_shift"], "Yabai toggle managed mode"),
+      p: alt("p", "Yabai focus previous window"),
+      f: alt("n", "Yabai focus next window"),
+      j: alt("f", "Yabai focus next managed window"),
+      k: addMods(
+        "f",
+        ["left_alt", "left_shift"],
+        "Yabai focus previous managed window"
+      ),
     },
 
     // d = "Digits" = numpad

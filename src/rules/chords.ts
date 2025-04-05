@@ -5,18 +5,20 @@ export const chords: Rule = {
   manipulators: [
     makeChord(["n", "e"], "right_shift"),
     makeChord(["e", "i"], "right_command"),
+    makeChord(["l", "u"], "right_alt"),
+    makeChord(["u", "y"], "right_control"),
     makeChord(["s", "t"], "left_shift"),
     makeChord(["s", "r"], "left_command"),
-    makeChord(["n", "u"], "left_control"),
-    makeChord(["u", "y"], "left_alt"),
+    makeChord(["f", "p"], "left_alt"),
+    makeChord(["w", "f"], "left_control"),
     //  "Activate Homerow.app click",
-    makeChord(["n", "i"], "delete_or_backspace", [
+    makeChord(["s", "e"], "delete_or_backspace", [
       "left_alt",
       "left_shift",
       "left_command",
     ]),
     //  "Activate Homerow.app scrolling",
-    makeChord(["r", "t"], "delete_or_backspace", [
+    makeChord(["t", "n"], "delete_or_backspace", [
       "left_shift",
       "left_command",
     ]),
