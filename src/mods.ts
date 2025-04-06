@@ -42,6 +42,14 @@ export function altShift(key: KeyCode, description?: string): LayerCommand {
 }
 
 /**
+ * Modify a keypress to include left_alt, left_shift, and left_control
+ */
+export function meh(key: KeyCode, description?: string): LayerCommand {
+  const modifiers: ModifiersKeys[] = ["left_alt", "left_shift", "left_control"];
+  return addMods(key, modifiers, description);
+}
+
+/**
  * Modify a keypress to include specified modifiers
  */
 export function addMods(

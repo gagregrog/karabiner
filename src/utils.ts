@@ -18,6 +18,8 @@ export function createTrackedKey({
   toIfAloneKey,
   toIfHeldKey,
   parameters,
+  conditions,
+  manipulators = [],
 }: {
   name: string;
   description: string;
@@ -25,6 +27,8 @@ export function createTrackedKey({
   toIfAloneKey?: KeyCode;
   toIfHeldKey?: KeyCode;
   parameters?: Parameters;
+  conditions?: Conditions[];
+  manipulators?: Manipulator[];
 }): { description: string; manipulators: Manipulator[] } {
   return {
     description,
@@ -54,10 +58,28 @@ export function createTrackedKey({
         ...(toIfAloneKey && { to_if_alone: [{ key_code: toIfAloneKey }] }),
         ...(toIfHeldKey && { to_if_held_down: [{ key_code: toIfHeldKey }] }),
         parameters,
+        conditions,
         type: "basic",
       },
+      ...manipulators,
     ],
   };
+}
+
+/**
+ * Duplicate a command layer across multiple activation keys
+ */
+export function duplicateLayer(
+  keyCodes: KeyCode[],
+  layerCommands: LayerKeySublayer
+) {
+  return keyCodes.reduce(
+    (acc, keyCode) => ({
+      ...acc,
+      [keyCode]: layerCommands,
+    }),
+    {} as Partial<Record<KeyCode, LayerKeySublayer>>
+  );
 }
 
 /**
@@ -68,7 +90,7 @@ export interface LayerCommand {
   description?: string;
 }
 
-type LayerKeySublayer = Partial<Record<KeyCode, LayerCommand>>;
+export type LayerKeySublayer = Partial<Record<KeyCode, LayerCommand>>;
 
 /**
  * Create a sublayer where every command is prefixed with a trackedVar
@@ -211,7 +233,7 @@ export function createSubLayers(
   );
 }
 
-function generateVariableName(keyOrName: KeyCode | string) {
+export function generateVariableName(keyOrName: KeyCode | string) {
   return `${keyOrName}_pressed`;
 }
 
@@ -221,6 +243,16 @@ export function trackedKeyActive(name: string): Conditions[] {
       name: generateVariableName(name),
       type: "variable_if",
       value: VAR_ON,
+    },
+  ];
+}
+
+export function trackedKeyInactive(name: string): Conditions[] {
+  return [
+    {
+      name: generateVariableName(name),
+      type: "variable_if",
+      value: VAR_OFF,
     },
   ];
 }

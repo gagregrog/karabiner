@@ -1,33 +1,34 @@
-import { KeyCode, Manipulator, ModifiersKeys, Rule } from "../types";
-import { createTrackedKey, trackedKeyActive } from "../utils";
+import { KeyCode, Manipulator, ModifiersKeys } from "../types";
+import {
+  createTrackedKey,
+  trackedKeyActive,
+  trackedKeyInactive,
+} from "../utils";
+import { LAYERS_NAME } from "./capsLayers";
 
 const modName = "caps_control";
 const heldKey = "left_control" as const;
 
-const trackedControl = createTrackedKey({
+export const capsControl = createTrackedKey({
   description:
-    "Change capslock to left_ctrl. Post escape if pressed alone, backspace with space, MNEI to HJKL when caps_lock held, n to command+shift+delete when left shift held",
+    "Change capslock to left_ctrl. Post escape if pressed alone, MNEI to arrow keys when caps_lock held",
   name: modName,
   fromKey: "caps_lock",
   toIfAloneKey: "escape",
   toIfHeldKey: heldKey,
+  conditions: trackedKeyInactive(LAYERS_NAME),
   parameters: {
     "basic.to_if_alone_timeout_milliseconds": 100,
     "basic.to_if_held_down_threshold_milliseconds": 100,
   },
-});
-
-export const capsControl: Rule = {
-  ...trackedControl,
   manipulators: [
-    ...trackedControl.manipulators,
     // note that these remappings occur *after* simple modification remappings, so "n" is actually "j" if QWERTY remapped to ColemakDH
     remap("m", "left_arrow"),
     remap("n", "down_arrow"),
     remap("e", "up_arrow"),
     remap("i", "right_arrow"),
   ],
-};
+});
 
 /**
  * Remap a key while the caps_control modifier is active

@@ -12,153 +12,6 @@
       "complex_modifications": {
         "rules": [
           {
-            "description": "Change capslock to left_ctrl. Post escape if pressed alone, backspace with space, MNEI to HJKL when caps_lock held, n to command+shift+delete when left shift held",
-            "manipulators": [
-              {
-                "description": "caps_lock -> caps_control",
-                "from": {
-                  "key_code": "caps_lock",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "caps_control_pressed",
-                      "value": 1
-                    }
-                  }
-                ],
-                "to_after_key_up": [
-                  {
-                    "set_variable": {
-                      "name": "caps_control_pressed",
-                      "value": 0
-                    }
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "escape"
-                  }
-                ],
-                "to_if_held_down": [
-                  {
-                    "key_code": "left_control"
-                  }
-                ],
-                "parameters": {
-                  "basic.to_if_alone_timeout_milliseconds": 100,
-                  "basic.to_if_held_down_threshold_milliseconds": 100
-                },
-                "type": "basic"
-              },
-              {
-                "description": "m -> left_arrow",
-                "conditions": [
-                  {
-                    "name": "caps_control_pressed",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_control"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": []
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "description": "n -> down_arrow",
-                "conditions": [
-                  {
-                    "name": "caps_control_pressed",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "n",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_control"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "down_arrow",
-                    "modifiers": []
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "description": "e -> up_arrow",
-                "conditions": [
-                  {
-                    "name": "caps_control_pressed",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "e",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_control"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "up_arrow",
-                    "modifiers": []
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "description": "i -> right_arrow",
-                "conditions": [
-                  {
-                    "name": "caps_control_pressed",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "i",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_control"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": []
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "Both command keys to command+tab (single press)",
             "manipulators": [
               {
@@ -301,7 +154,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -385,7 +253,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -469,7 +352,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -553,7 +451,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -638,7 +551,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -734,6 +662,30 @@
                     "value": 1
                   }
                 ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open https://developer.mozilla.org/en-US/"
+                  }
+                ],
+                "description": "Open https://developer.mozilla.org/en-US/",
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 1
+                  }
+                ]
               }
             ]
           },
@@ -800,7 +752,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -1106,7 +1073,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -1424,6 +1406,672 @@
             ]
           },
           {
+            "description": "layers sublayer \"return_or_enter\"",
+            "manipulators": [
+              {
+                "description": "Toggle layers sublayer return_or_enter",
+                "type": "basic",
+                "from": {
+                  "key_code": "return_or_enter",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "return_or_enter_pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "return_or_enter_pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus managed window west",
+                "to": [
+                  {
+                    "key_code": "m",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus managed window south",
+                "to": [
+                  {
+                    "key_code": "n",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus managed window north",
+                "to": [
+                  {
+                    "key_code": "e",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus managed window east",
+                "to": [
+                  {
+                    "key_code": "i",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window west",
+                "to": [
+                  {
+                    "key_code": "m",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "r",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window south",
+                "to": [
+                  {
+                    "key_code": "n",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window north",
+                "to": [
+                  {
+                    "key_code": "e",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window east",
+                "to": [
+                  {
+                    "key_code": "i",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "g",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "layers sublayer \"caps_lock\"",
+            "manipulators": [
+              {
+                "description": "Toggle layers sublayer caps_lock",
+                "type": "basic",
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "caps_lock_pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "caps_lock_pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus managed window west",
+                "to": [
+                  {
+                    "key_code": "m",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus managed window south",
+                "to": [
+                  {
+                    "key_code": "n",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus managed window north",
+                "to": [
+                  {
+                    "key_code": "e",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus managed window east",
+                "to": [
+                  {
+                    "key_code": "i",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window west",
+                "to": [
+                  {
+                    "key_code": "m",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "r",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window south",
+                "to": [
+                  {
+                    "key_code": "n",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window north",
+                "to": [
+                  {
+                    "key_code": "e",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window east",
+                "to": [
+                  {
+                    "key_code": "i",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "g",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "layers sublayer \"delete_or_backspace\"",
             "manipulators": [
               {
@@ -1491,6 +2139,21 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "d_pressed",
                     "value": 0
                   },
@@ -1507,197 +2170,6 @@
                   {
                     "type": "variable_if",
                     "name": "layers_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "Yabai balance splits",
-                "to": [
-                  {
-                    "key_code": "b",
-                    "modifiers": [
-                      "left_alt"
-                    ]
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "b",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "delete_or_backspace_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "Yabai toggle float",
-                "to": [
-                  {
-                    "key_code": "t",
-                    "modifiers": [
-                      "left_alt"
-                    ]
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "f",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "delete_or_backspace_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "Yabai toggle managed mode",
-                "to": [
-                  {
-                    "key_code": "t",
-                    "modifiers": [
-                      "left_alt",
-                      "left_shift"
-                    ]
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "t",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "delete_or_backspace_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "Yabai focus previous window",
-                "to": [
-                  {
-                    "key_code": "p",
-                    "modifiers": [
-                      "left_alt"
-                    ]
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "p",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "delete_or_backspace_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "Yabai focus next window",
-                "to": [
-                  {
-                    "key_code": "n",
-                    "modifiers": [
-                      "left_alt"
-                    ]
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "s",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "delete_or_backspace_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "Yabai focus next managed window",
-                "to": [
-                  {
-                    "key_code": "f",
-                    "modifiers": [
-                      "left_alt"
-                    ]
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "o",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "delete_or_backspace_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "Yabai focus previous managed window",
-                "to": [
-                  {
-                    "key_code": "f",
-                    "modifiers": [
-                      "left_alt",
-                      "left_shift"
-                    ]
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "a",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "delete_or_backspace_pressed",
                     "value": 1
                   }
                 ]
@@ -1813,6 +2285,472 @@
                     "value": 1
                   }
                 ]
+              },
+              {
+                "description": "Yabai swap managed window west",
+                "to": [
+                  {
+                    "key_code": "m",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "r",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "delete_or_backspace_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window south",
+                "to": [
+                  {
+                    "key_code": "n",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "delete_or_backspace_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window north",
+                "to": [
+                  {
+                    "key_code": "e",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "delete_or_backspace_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai swap managed window east",
+                "to": [
+                  {
+                    "key_code": "i",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "g",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "delete_or_backspace_pressed",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "layers sublayer \"y\"",
+            "manipulators": [
+              {
+                "description": "Toggle layers sublayer y",
+                "type": "basic",
+                "from": {
+                  "key_code": "y",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "y_pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "y_pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai balance splits",
+                "to": [
+                  {
+                    "key_code": "b",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "b",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai toggle float",
+                "to": [
+                  {
+                    "key_code": "t",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai toggle managed mode",
+                "to": [
+                  {
+                    "key_code": "t",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus previous window",
+                "to": [
+                  {
+                    "key_code": "p",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai select next window",
+                "to": [
+                  {
+                    "key_code": "n",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus next managed window",
+                "to": [
+                  {
+                    "key_code": "f",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "g",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai focus previous managed window",
+                "to": [
+                  {
+                    "key_code": "f",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "a",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai rotate splits",
+                "to": [
+                  {
+                    "key_code": "r",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "r",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai cycle split",
+                "to": [
+                  {
+                    "key_code": "c",
+                    "modifiers": [
+                      "left_alt"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "c",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
               }
             ]
           },
@@ -1884,7 +2822,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -2214,7 +3167,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -2263,6 +3231,7 @@
                 ]
               },
               {
+                "description": "To play_or_pause",
                 "to": [
                   {
                     "key_code": "play_or_pause"
@@ -2286,6 +3255,7 @@
                 ]
               },
               {
+                "description": "To volume_increment",
                 "to": [
                   {
                     "key_code": "volume_increment"
@@ -2309,6 +3279,7 @@
                 ]
               },
               {
+                "description": "To volume_decrement",
                 "to": [
                   {
                     "key_code": "volume_decrement"
@@ -2332,6 +3303,7 @@
                 ]
               },
               {
+                "description": "To fastforward",
                 "to": [
                   {
                     "key_code": "fastforward"
@@ -2355,6 +3327,7 @@
                 ]
               },
               {
+                "description": "To rewind",
                 "to": [
                   {
                     "key_code": "rewind"
@@ -2447,7 +3420,22 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -2949,6 +3937,160 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 50
                 },
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Change capslock to left_ctrl. Post escape if pressed alone, MNEI to arrow keys when caps_lock held",
+            "manipulators": [
+              {
+                "description": "caps_lock -> caps_control",
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "caps_control_pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "caps_control_pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "to_if_held_down": [
+                  {
+                    "key_code": "left_control"
+                  }
+                ],
+                "parameters": {
+                  "basic.to_if_alone_timeout_milliseconds": 100,
+                  "basic.to_if_held_down_threshold_milliseconds": 100
+                },
+                "conditions": [
+                  {
+                    "name": "layers_pressed",
+                    "type": "variable_if",
+                    "value": 0
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "m -> left_arrow",
+                "conditions": [
+                  {
+                    "name": "caps_control_pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": []
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "n -> down_arrow",
+                "conditions": [
+                  {
+                    "name": "caps_control_pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "down_arrow",
+                    "modifiers": []
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "e -> up_arrow",
+                "conditions": [
+                  {
+                    "name": "caps_control_pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "up_arrow",
+                    "modifiers": []
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "i -> right_arrow",
+                "conditions": [
+                  {
+                    "name": "caps_control_pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow",
+                    "modifiers": []
+                  }
+                ],
                 "type": "basic"
               }
             ]

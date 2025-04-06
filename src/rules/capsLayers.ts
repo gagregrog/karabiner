@@ -1,17 +1,24 @@
-import { alt, altShift, lcag } from "../mods";
+import { addMods, alt, altShift, lcag, meh } from "../mods";
 import { Rule } from "../types";
-import { app, open, createTrackedKey, createSubLayers, to } from "../utils";
+import {
+  app,
+  open,
+  createTrackedKey,
+  createSubLayers,
+  to,
+  duplicateLayer,
+} from "../utils";
 
-const LAYERS = "layers";
+export const LAYERS_NAME = "layers";
 
 export const capsLayers: Rule[] = [
   createTrackedKey({
-    name: LAYERS,
+    name: LAYERS_NAME,
     description: "Layers",
     fromKey: "spacebar",
     toIfAloneKey: "spacebar",
   }),
-  ...createSubLayers(LAYERS, {
+  ...createSubLayers(LAYERS_NAME, {
     // movement keys for right hand
     m: to("left_arrow"),
     n: to("down_arrow"),
@@ -23,6 +30,7 @@ export const capsLayers: Rule[] = [
       8: open("https://localhost:8000"),
       9: open("https://localhost:9000"),
       g: open("https://github.com"),
+      m: open("https://developer.mozilla.org/en-US/"),
     },
 
     // "O"pen applications
@@ -53,21 +61,33 @@ export const capsLayers: Rule[] = [
       h: lcag("f18", "Lower Left"),
     },
 
-    // Yabai
-    delete_or_backspace: {
+    // Yabai - Widnow controls
+    ...duplicateLayer(["return_or_enter", "caps_lock", "delete_or_backspace"], {
+      //  keybinds managed by skhd
+      //  functions managed by yabai and yabai.sh
+      m: altShift("m", "Yabai focus managed window west"),
+      n: altShift("n", "Yabai focus managed window south"),
+      e: altShift("e", "Yabai focus managed window north"),
+      i: altShift("i", "Yabai focus managed window east"),
+      r: meh("m", "Yabai swap managed window west"),
+      t: meh("n", "Yabai swap managed window south"),
+      s: meh("e", "Yabai swap managed window north"),
+      g: meh("i", "Yabai swap managed window east"),
+    }),
+
+    // "Y"abai - General control
+    y: {
       //  keybinds managed by skhd
       //  functions managed by yabai and yabai.sh
       b: alt("b", "Yabai balance splits"),
       f: alt("t", "Yabai toggle float"),
       t: altShift("t", "Yabai toggle managed mode"),
       p: alt("p", "Yabai focus previous window"),
-      s: alt("n", "Yabai focus next window"),
-      o: alt("f", "Yabai focus next managed window"),
+      s: alt("n", "Yabai select next window"),
+      g: alt("f", "Yabai focus next managed window"),
       a: altShift("f", "Yabai focus previous managed window"),
-      m: altShift("m", "Yabai focus managed window west"),
-      n: altShift("n", "Yabai focus managed window south"),
-      e: altShift("e", "Yabai focus managed window north"),
-      i: altShift("i", "Yabai focus managed window east"),
+      r: alt("r", "Yabai rotate splits"),
+      c: alt("c", "Yabai cycle split"),
     },
 
     // "D"igits / numpad
@@ -86,50 +106,16 @@ export const capsLayers: Rule[] = [
 
     // "S"ystem
     s: {
-      l: {
-        description: "Lock the computer with spacebar + s + l",
-        to: [
-          {
-            key_code: "q",
-            modifiers: ["right_control", "right_command"],
-          },
-        ],
-      },
-      m: {
-        to: [
-          {
-            key_code: "play_or_pause",
-          },
-        ],
-      },
-      u: {
-        to: [
-          {
-            key_code: "volume_increment",
-          },
-        ],
-      },
-      e: {
-        to: [
-          {
-            key_code: "volume_decrement",
-          },
-        ],
-      },
-      i: {
-        to: [
-          {
-            key_code: "fastforward",
-          },
-        ],
-      },
-      n: {
-        to: [
-          {
-            key_code: "rewind",
-          },
-        ],
-      },
+      l: addMods(
+        "q",
+        ["right_control", "right_command"],
+        "Lock the computer with spacebar + s + l"
+      ),
+      m: to("play_or_pause"),
+      u: to("volume_increment"),
+      e: to("volume_decrement"),
+      i: to("fastforward"),
+      n: to("rewind"),
     },
 
     // "R"aycast
