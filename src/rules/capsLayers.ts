@@ -1,4 +1,4 @@
-import { addMods, alt, lcag } from "../mods";
+import { alt, altShift, lcag } from "../mods";
 import { Rule } from "../types";
 import { app, open, createTrackedKey, createSubLayers, to } from "../utils";
 
@@ -17,13 +17,15 @@ export const capsLayers: Rule[] = [
     n: to("down_arrow"),
     e: to("up_arrow"),
     i: to("right_arrow"),
-    // b = "B"rowse
+
+    // "B"rowse
     b: {
       8: open("https://localhost:8000"),
       9: open("https://localhost:9000"),
       g: open("https://github.com"),
     },
-    // o = "Open" applications
+
+    // "O"pen applications
     o: {
       p: app("1Password"),
       a: app("Arc"),
@@ -36,9 +38,9 @@ export const capsLayers: Rule[] = [
       y: app("YT Music"),
     },
 
-    // w = "Window"
+    // "W"indow / "W"index
+    // keybinds/functions managed by hammerspoon.Windex
     w: {
-      // ** keybinds/functions managed by hammerspoon.Windex
       u: lcag("up_arrow", "Upper Half"),
       n: lcag("left_arrow", "Left Half"),
       comma: lcag("down_arrow", "Lower Half"),
@@ -49,21 +51,26 @@ export const capsLayers: Rule[] = [
       period: lcag("f16", "Lower Right"),
       l: lcag("f17", "Upper Left"),
       h: lcag("f18", "Lower Left"),
-      // ** keybinds managed by skhd
-      // ** functions managed by yabai and yabai.sh
-      delete_or_backspace: alt("t", "Yabai toggle float"),
-      m: addMods("t", ["left_alt", "left_shift"], "Yabai toggle managed mode"),
-      p: alt("p", "Yabai focus previous window"),
-      f: alt("n", "Yabai focus next window"),
-      j: alt("f", "Yabai focus next managed window"),
-      k: addMods(
-        "f",
-        ["left_alt", "left_shift"],
-        "Yabai focus previous managed window"
-      ),
     },
 
-    // d = "Digits" = numpad
+    // Yabai
+    delete_or_backspace: {
+      //  keybinds managed by skhd
+      //  functions managed by yabai and yabai.sh
+      b: alt("b", "Yabai balance splits"),
+      f: alt("t", "Yabai toggle float"),
+      t: altShift("t", "Yabai toggle managed mode"),
+      p: alt("p", "Yabai focus previous window"),
+      s: alt("n", "Yabai focus next window"),
+      o: alt("f", "Yabai focus next managed window"),
+      a: altShift("f", "Yabai focus previous managed window"),
+      m: altShift("m", "Yabai focus managed window west"),
+      n: altShift("n", "Yabai focus managed window south"),
+      e: altShift("e", "Yabai focus managed window north"),
+      i: altShift("i", "Yabai focus managed window east"),
+    },
+
+    // "D"igits / numpad
     d: {
       period: to("0"),
       k: to("1"),
@@ -77,7 +84,7 @@ export const capsLayers: Rule[] = [
       y: to("9"),
     },
 
-    // s = "System"
+    // "S"ystem
     s: {
       l: {
         description: "Lock the computer with spacebar + s + l",
@@ -125,7 +132,7 @@ export const capsLayers: Rule[] = [
       },
     },
 
-    // r = "Raycast"
+    // "R"aycast
     r: {
       y: open("raycast://confetti"),
       c: open("raycast://extensions/thomas/color-picker/pick-color"),

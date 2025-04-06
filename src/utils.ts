@@ -273,20 +273,6 @@ export function to(keyCode: KeyCode): LayerCommand {
 }
 
 /**
- * Simple remap from one key to another if held
- */
-export function toIfHeld(
-  fromKeyCode: KeyCode,
-  toKeyCode: KeyCode
-): LayerCommand {
-  return {
-    description: `${fromKeyCode} if pressed, ${toKeyCode} if held`,
-    to: [{ key_code: fromKeyCode }],
-    to_if_held_down: [{ key_code: toKeyCode }],
-  };
-}
-
-/**
  * Shortcut for "Open an app" command (of which there are a bunch)
  */
 export function app(name: string): LayerCommand {
