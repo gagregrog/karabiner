@@ -40,7 +40,7 @@ function makeChord(
     },
     to: [{ key_code: toKey, modifiers: toModifiers }],
     parameters: {
-      "basic.simultaneous_threshold_milliseconds": 50,
+      "basic.simultaneous_threshold_milliseconds": 25,
     },
     type: "basic",
   };
