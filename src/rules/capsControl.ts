@@ -4,7 +4,7 @@ import {
   trackedKeyActive,
   trackedKeyInactive,
 } from "../utils";
-import { LAYERS_NAME } from "./capsLayers";
+import { LAYERS_NAME } from "./spaceLayers";
 
 const modName = "caps_control";
 const heldKey = "left_control" as const;

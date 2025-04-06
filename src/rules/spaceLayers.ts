@@ -11,7 +11,7 @@ import {
 
 export const LAYERS_NAME = "layers";
 
-export const capsLayers: Rule[] = [
+export const spaceLayers: Rule[] = [
   createTrackedKey({
     name: LAYERS_NAME,
     description: "Layers",
