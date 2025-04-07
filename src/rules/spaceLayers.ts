@@ -62,6 +62,8 @@ export const spaceLayers: Rule[] = [
     },
 
     // Yabai - Widnow controls
+    // return_or_enter/caps_lock useful on builtin keyboard
+    // delete_or_backspace useful on external keyboard
     ...duplicateLayer(["return_or_enter", "caps_lock", "delete_or_backspace"], {
       //  keybinds managed by skhd
       //  functions managed by yabai and yabai.sh
