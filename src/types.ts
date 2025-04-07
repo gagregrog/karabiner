@@ -51,7 +51,7 @@ export type Conditions =
   | DeviceCondition
   | KeybaordTypeCondition
   | InputSourceCondition
-  | VaribaleCondition
+  | VariableCondition
   | EventChangedCondition;
 
 type FrontMostApplicationCondition = {
@@ -67,7 +67,7 @@ type DeviceCondition = {
     | "device_unless"
     | "device_exists_if"
     | "device_exists_unless";
-  identifiers: Identifiers;
+  identifiers: Identifiers[];
   description?: string;
 };
 
@@ -99,7 +99,7 @@ interface InputSource {
   input_mode_id?: string;
 }
 
-type VaribaleCondition = {
+type VariableCondition = {
   type: "variable_if" | "variable_unless";
   name: string | number | boolean;
   value: string | number;

@@ -823,6 +823,23 @@
                   }
                 ],
                 "description": "Open -a 'Arc.app'",
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
                 "type": "basic",
                 "from": {
                   "key_code": "a",
@@ -831,14 +848,7 @@
                       "any"
                     ]
                   }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "o_pressed",
-                    "value": 1
-                  }
-                ]
+                }
               },
               {
                 "to": [
@@ -847,6 +857,23 @@
                   }
                 ],
                 "description": "Open -a 'Brave Browser.app'",
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
                 "type": "basic",
                 "from": {
                   "key_code": "b",
@@ -855,14 +882,7 @@
                       "any"
                     ]
                   }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "o_pressed",
-                    "value": 1
-                  }
-                ]
+                }
               },
               {
                 "to": [
@@ -891,10 +911,61 @@
               {
                 "to": [
                   {
+                    "shell_command": "open -a 'Messages.app'"
+                  }
+                ],
+                "description": "Open -a 'Messages.app'",
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                }
+              },
+              {
+                "to": [
+                  {
                     "shell_command": "open -a 'Notion.app'"
                   }
                 ],
                 "description": "Open -a 'Notion.app'",
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
                 "type": "basic",
                 "from": {
                   "key_code": "n",
@@ -903,14 +974,7 @@
                       "any"
                     ]
                   }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "o_pressed",
-                    "value": 1
-                  }
-                ]
+                }
               },
               {
                 "to": [
@@ -2617,7 +2681,7 @@
                 ]
               },
               {
-                "description": "Yabai select next window",
+                "description": "Yabai focus next window",
                 "to": [
                   {
                     "key_code": "n",
@@ -2738,6 +2802,36 @@
                 "type": "basic",
                 "from": {
                   "key_code": "c",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Yabai toggle split",
+                "to": [
+                  {
+                    "key_code": "s",
+                    "modifiers": [
+                      "left_alt",
+                      "left_shift",
+                      "left_control",
+                      "left_command"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "d",
                   "modifiers": {
                     "optional": [
                       "any"

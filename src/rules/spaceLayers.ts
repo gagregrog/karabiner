@@ -1,4 +1,5 @@
-import { addMods, alt, altShift, lcag, meh } from "../mods";
+import { isIntelCondition, isNotIntelCondition } from "../identifiers";
+import { addMods, alt, altShift, hyper, lcag, meh } from "../mods";
 import { Rule } from "../types";
 import {
   app,
@@ -7,6 +8,7 @@ import {
   createSubLayers,
   to,
   duplicateLayer,
+  withConditions,
 } from "../utils";
 
 export const LAYERS_NAME = "layers";
@@ -36,10 +38,11 @@ export const spaceLayers: Rule[] = [
     // "O"pen applications
     o: {
       p: app("1Password"),
-      a: app("Arc"),
-      b: app("Brave Browser"),
+      a: withConditions(app("Arc"), isNotIntelCondition),
+      b: withConditions(app("Brave Browser"), isIntelCondition),
       s: app("Slack"),
-      n: app("Notion"),
+      m: withConditions(app("Messages"), isIntelCondition),
+      n: withConditions(app("Notion"), isNotIntelCondition),
       t: app("Alacritty"),
       z: app("zoom.us"),
       f: app("Finder"),
@@ -85,11 +88,12 @@ export const spaceLayers: Rule[] = [
       f: alt("t", "Yabai toggle float"),
       t: altShift("t", "Yabai toggle managed mode"),
       p: alt("p", "Yabai focus previous window"),
-      s: alt("n", "Yabai select next window"),
+      s: alt("n", "Yabai focus next window"),
       g: alt("f", "Yabai focus next managed window"),
       a: altShift("f", "Yabai focus previous managed window"),
       r: alt("r", "Yabai rotate splits"),
       c: alt("c", "Yabai cycle split"),
+      d: hyper("s", "Yabai toggle split"),
     },
 
     // "D"igits / numpad

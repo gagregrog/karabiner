@@ -2,12 +2,9 @@ import { capsControl } from "../rules/capsControl";
 import { spaceLayers } from "../rules/spaceLayers";
 import { chords } from "../rules/chords";
 import { commandCommand } from "../rules/commandCommmand";
-import {
-  colemakModDH as colemakModDHSimple,
-  INTEL_MAC_ID,
-  SILICONE_MAC_ID,
-} from "../simpleModifications";
+import { colemakModDH as colemakModDHSimple } from "../simpleModifications";
 import { Profile } from "../types";
+import { INTEL_MAC_ID, SILICONE_MAC_ID } from "../identifiers";
 
 export const colemakModDH: Profile = {
   name: "Colemak Mod DH",

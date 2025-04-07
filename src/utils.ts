@@ -88,6 +88,7 @@ export function duplicateLayer(
 export interface LayerCommand {
   to: To[];
   description?: string;
+  conditions?: Conditions[];
 }
 
 export type LayerKeySublayer = Partial<Record<KeyCode, LayerCommand>>;
@@ -173,6 +174,7 @@ export function createSubLayer(
             name: subLayerVariableName,
             value: VAR_ON,
           },
+          ...(commands[command_key]?.conditions || []),
         ],
       })
     ),
@@ -309,4 +311,17 @@ export function to(keyCode: KeyCode): LayerCommand {
  */
 export function app(name: string): LayerCommand {
   return open(`-a '${name}.app'`);
+}
+
+/**
+ * Wrap a LayerCommand to include a specified
+ */
+export function withConditions(
+  command: LayerCommand,
+  conditions: Conditions[]
+) {
+  return {
+    ...command,
+    conditions,
+  };
 }
