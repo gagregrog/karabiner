@@ -38,8 +38,10 @@ export const spaceLayers: Rule[] = [
     // "O"pen applications
     o: {
       p: app("1Password"),
-      a: withConditions(app("Arc"), isNotIntelCondition),
-      b: withConditions(app("Brave Browser"), isIntelCondition),
+      b: [
+        withConditions(app("Arc"), isNotIntelCondition),
+        withConditions(app("Brave Browser"), isIntelCondition),
+      ],
       s: app("Slack"),
       m: withConditions(app("Messages"), isIntelCondition),
       n: withConditions(app("Notion"), isNotIntelCondition),

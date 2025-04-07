@@ -91,7 +91,9 @@ export interface LayerCommand {
   conditions?: Conditions[];
 }
 
-export type LayerKeySublayer = Partial<Record<KeyCode, LayerCommand>>;
+export type LayerKeySublayer = Partial<
+  Record<KeyCode, LayerCommand | LayerCommand[]>
+>;
 
 /**
  * Create a sublayer where every command is prefixed with a trackedVar
@@ -157,27 +159,35 @@ export function createSubLayer(
       ],
     },
     // Define the individual commands that are meant to trigger in the sublayer
-    ...(Object.keys(commands) as (keyof typeof commands)[]).map(
-      (command_key): Manipulator => ({
-        ...commands[command_key],
-        type: "basic" as const,
-        from: {
-          key_code: command_key,
-          modifiers: {
-            optional: ["any"],
+    ...Object.entries(commands)
+      .map(([command_key, sublayerConfig]): Manipulator[] => {
+        // support passing multiple commands to a single key, ie with conditions
+        const subLayerCommands: LayerCommand[] = Array.isArray(sublayerConfig)
+          ? sublayerConfig
+          : [sublayerConfig];
+
+        return subLayerCommands.map((subLayerCommand) => ({
+          ...subLayerCommand,
+          type: "basic" as const,
+          from: {
+            key_code: command_key as KeyCode,
+            modifiers: {
+              optional: ["any"],
+            },
           },
-        },
-        // Only trigger this command if the variable is 1 (i.e., if LAYER + sublayer is held)
-        conditions: [
-          {
-            type: "variable_if",
-            name: subLayerVariableName,
-            value: VAR_ON,
-          },
-          ...(commands[command_key]?.conditions || []),
-        ],
+          // Only trigger this command if the variable is 1 (i.e., if LAYER + sublayer is held)
+          conditions: [
+            {
+              type: "variable_if",
+              name: subLayerVariableName,
+              value: VAR_ON,
+            },
+            // additional filtering criteria passed in config
+            ...(subLayerCommand?.conditions || []),
+          ],
+        }));
       })
-    ),
+      .flat(),
   ];
 }
 
