@@ -48,6 +48,7 @@ export const spaceLayers: Rule[] = [
       t: app("Alacritty"),
       z: app("zoom.us"),
       f: app("Finder"),
+      q: app("QuickTime Player"),
       y: app("YT Music"),
     },
 
@@ -124,6 +125,7 @@ export const spaceLayers: Rule[] = [
       e: to("volume_decrement"),
       i: to("fastforward"),
       n: to("rewind"),
+      k: hyper("k", "Toggle Keycastr"),
     },
 
     // "R"aycast
