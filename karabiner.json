@@ -4025,6 +4025,126 @@
                 "type": "basic"
               },
               {
+                "description": "h + comma -> right_command + right_shift",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "h"
+                    },
+                    {
+                      "key_code": "comma"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_command",
+                    "modifiers": [
+                      "right_shift"
+                    ]
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 25
+                },
+                "type": "basic"
+              },
+              {
+                "description": "c + d -> left_command + left_shift",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "c"
+                    },
+                    {
+                      "key_code": "d"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command",
+                    "modifiers": [
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 25
+                },
+                "type": "basic"
+              },
+              {
+                "description": "comma + period -> right_command + right_option",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "comma"
+                    },
+                    {
+                      "key_code": "period"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_command",
+                    "modifiers": [
+                      "right_option"
+                    ]
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 25
+                },
+                "type": "basic"
+              },
+              {
+                "description": "x + c -> left_command + left_option",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "x"
+                    },
+                    {
+                      "key_code": "c"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command",
+                    "modifiers": [
+                      "left_option"
+                    ]
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 25
+                },
+                "type": "basic"
+              },
+              {
                 "description": "s + e -> delete_or_backspace + left_alt + left_shift + left_command",
                 "from": {
                   "simultaneous": [
