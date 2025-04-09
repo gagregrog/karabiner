@@ -49,6 +49,7 @@ export const spaceLayers: Rule[] = [
       z: app("zoom.us"),
       f: app("Finder"),
       q: app("QuickTime Player"),
+      v: app("Visual Studio Code"),
       y: app("YT Music"),
     },
 
