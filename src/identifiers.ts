@@ -10,14 +10,14 @@ export const INTEL_MAC_ID = {
 
 export const isNotIntelCondition: Conditions[] = [
   {
-    type: "device_unless",
+    type: "device_exists_unless",
     identifiers: [INTEL_MAC_ID],
   },
 ];
 
 export const isIntelCondition: Conditions[] = [
   {
-    type: "device_if",
+    type: "device_exists_if",
     identifiers: [INTEL_MAC_ID],
   },
 ];
