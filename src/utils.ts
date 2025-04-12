@@ -9,6 +9,28 @@ import {
 } from "./types";
 
 /**
+ * Create a set of nested layers with commands
+ */
+export function makeLayers(
+  name: string,
+  activatedBy: KeyCode | KeyCode[],
+  sublayers: Sublayers
+): Rule[] {
+  const activators = Array.isArray(activatedBy) ? activatedBy : [activatedBy];
+  return [
+    ...activators.map((fromKey) =>
+      createTrackedKey({
+        name,
+        description: `Primary ${name} activator`,
+        fromKey,
+        toIfAloneKey: fromKey,
+      })
+    ),
+    ...createSubLayers(name, sublayers),
+  ];
+}
+
+/**
  * Modify and track a keypress
  */
 export function createTrackedKey({
@@ -30,6 +52,7 @@ export function createTrackedKey({
   conditions?: Conditions[];
   manipulators?: Manipulator[];
 }): { description: string; manipulators: Manipulator[] } {
+  const variableName = generateVariableName(name);
   return {
     description,
     manipulators: [
@@ -42,7 +65,7 @@ export function createTrackedKey({
         to: [
           {
             set_variable: {
-              name: generateVariableName(name),
+              name: variableName,
               value: VAR_ON,
             },
           },
@@ -50,7 +73,7 @@ export function createTrackedKey({
         to_after_key_up: [
           {
             set_variable: {
-              name: generateVariableName(name),
+              name: variableName,
               value: VAR_OFF,
             },
           },
@@ -58,7 +81,12 @@ export function createTrackedKey({
         ...(toIfAloneKey && { to_if_alone: [{ key_code: toIfAloneKey }] }),
         ...(toIfHeldKey && { to_if_held_down: [{ key_code: toIfHeldKey }] }),
         parameters,
-        conditions,
+        conditions: [
+          ...(conditions || []),
+          // make sure we only override the key if the tracked variable that is activated by the key is not active
+          // this is useful if you have more than one key that tracks the same name
+          ...trackedKeyInactive(name),
+        ],
         type: "basic",
       },
       ...manipulators,
@@ -93,6 +121,10 @@ export interface LayerCommand {
 
 export type LayerKeySublayer = Partial<
   Record<KeyCode, LayerCommand | LayerCommand[]>
+>;
+
+export type Sublayers = Partial<
+  Record<KeyCode, LayerKeySublayer | LayerCommand>
 >;
 
 /**
@@ -197,7 +229,7 @@ export function createSubLayer(
  */
 export function createSubLayers(
   parentLayerName: string,
-  subLayers: Partial<Record<KeyCode, LayerKeySublayer | LayerCommand>>
+  subLayers: Sublayers
 ): Rule[] {
   const parentVariableName = generateVariableName(parentLayerName);
   const allSubLayerVariables = (
