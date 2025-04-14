@@ -358,12 +358,12 @@ export function app(name: string): LayerCommand {
 /**
  * Wrap a LayerCommand to include a specified
  */
-export function withConditions(
-  command: LayerCommand,
+export function withConditions<T extends Manipulator | LayerCommand>(
+  commandOrManipulator: T,
   conditions: Conditions[]
 ) {
   return {
-    ...command,
-    conditions,
+    ...commandOrManipulator,
+    conditions: [...(commandOrManipulator.conditions || []), ...conditions],
   };
 }

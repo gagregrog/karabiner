@@ -1,4 +1,4 @@
-import { isIntelCondition, isNotIntelCondition } from "../../identifiers";
+import { isIntelCondition, isNotIntelCondition } from "../../conditions";
 import { app, LayerKeySublayer, withConditions } from "../../utils";
 
 /**
