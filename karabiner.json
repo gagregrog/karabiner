@@ -55,6 +55,112 @@
             ]
           },
           {
+            "description": "Track when left_shift is pressed in order to disable spaceLayers",
+            "manipulators": [
+              {
+                "description": "left_shift -> shift",
+                "from": {
+                  "key_code": "left_shift",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "shift_pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "shift_pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_held_down": [
+                  {
+                    "key_code": "left_shift"
+                  }
+                ],
+                "parameters": {
+                  "basic.to_if_held_down_threshold_milliseconds": 0
+                },
+                "conditions": [
+                  {
+                    "name": "layers_pressed",
+                    "type": "variable_if",
+                    "value": 0
+                  },
+                  {
+                    "name": "shift_pressed",
+                    "type": "variable_if",
+                    "value": 0
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Track when right_shift is pressed in order to disable spaceLayers",
+            "manipulators": [
+              {
+                "description": "right_shift -> shift",
+                "from": {
+                  "key_code": "right_shift",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "shift_pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "shift_pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_held_down": [
+                  {
+                    "key_code": "right_shift"
+                  }
+                ],
+                "parameters": {
+                  "basic.to_if_held_down_threshold_milliseconds": 0
+                },
+                "conditions": [
+                  {
+                    "name": "layers_pressed",
+                    "type": "variable_if",
+                    "value": 0
+                  },
+                  {
+                    "name": "shift_pressed",
+                    "type": "variable_if",
+                    "value": 0
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Primary layers activator",
             "manipulators": [
               {
@@ -89,6 +195,11 @@
                   }
                 ],
                 "conditions": [
+                  {
+                    "name": "shift_pressed",
+                    "type": "variable_if",
+                    "value": 0
+                  },
                   {
                     "name": "layers_pressed",
                     "type": "variable_if",
@@ -134,6 +245,11 @@
                   }
                 ],
                 "conditions": [
+                  {
+                    "name": "shift_pressed",
+                    "type": "variable_if",
+                    "value": 0
+                  },
                   {
                     "name": "layers_pressed",
                     "type": "variable_if",
@@ -5457,7 +5573,7 @@
             "description": "Change capslock to left_ctrl. Post escape if pressed alone, MNEI to arrow keys when caps_lock held",
             "manipulators": [
               {
-                "description": "caps_lock -> caps_control",
+                "description": "caps_lock -> caps",
                 "from": {
                   "key_code": "caps_lock",
                   "modifiers": {
@@ -5469,7 +5585,7 @@
                 "to": [
                   {
                     "set_variable": {
-                      "name": "caps_control_pressed",
+                      "name": "caps_pressed",
                       "value": 1
                     }
                   }
@@ -5477,7 +5593,7 @@
                 "to_after_key_up": [
                   {
                     "set_variable": {
-                      "name": "caps_control_pressed",
+                      "name": "caps_pressed",
                       "value": 0
                     }
                   }
@@ -5503,7 +5619,7 @@
                     "value": 0
                   },
                   {
-                    "name": "caps_control_pressed",
+                    "name": "caps_pressed",
                     "type": "variable_if",
                     "value": 0
                   }
@@ -5514,7 +5630,7 @@
                 "description": "m -> left_arrow",
                 "conditions": [
                   {
-                    "name": "caps_control_pressed",
+                    "name": "caps_pressed",
                     "type": "variable_if",
                     "value": 1
                   }
@@ -5539,7 +5655,7 @@
                 "description": "n -> down_arrow",
                 "conditions": [
                   {
-                    "name": "caps_control_pressed",
+                    "name": "caps_pressed",
                     "type": "variable_if",
                     "value": 1
                   }
@@ -5564,7 +5680,7 @@
                 "description": "e -> up_arrow",
                 "conditions": [
                   {
-                    "name": "caps_control_pressed",
+                    "name": "caps_pressed",
                     "type": "variable_if",
                     "value": 1
                   }
@@ -5589,7 +5705,7 @@
                 "description": "i -> right_arrow",
                 "conditions": [
                   {
-                    "name": "caps_control_pressed",
+                    "name": "caps_pressed",
                     "type": "variable_if",
                     "value": 1
                   }

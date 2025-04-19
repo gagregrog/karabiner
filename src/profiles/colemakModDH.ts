@@ -5,6 +5,7 @@ import { commandCommand } from "../rules/commandCommmand";
 import { colemakModDH as colemakModDHSimple } from "../simpleModifications";
 import { Profile } from "../types";
 import { INTEL_MAC_ID, SILICONE_MAC_ID } from "../identifiers";
+import { shiftMod } from "../rules/shiftMod";
 
 export const colemakModDH: Profile = {
   name: "Colemak Mod DH",
@@ -13,7 +14,7 @@ export const colemakModDH: Profile = {
     keyboard_type_v2: "ansi",
   },
   complex_modifications: {
-    rules: [commandCommand, spaceLayers, chords, capsControl].flat(),
+    rules: [commandCommand, shiftMod, spaceLayers, chords, capsControl].flat(),
   },
   devices: [
     {
