@@ -1,12 +1,5 @@
 import { VAR_OFF, VAR_ON } from "./constants";
-import {
-  To,
-  KeyCode,
-  Manipulator,
-  Rule,
-  Parameters,
-  Conditions,
-} from "./types";
+import { To, KeyCode, Manipulator, Rule, Parameters, Condition } from "./types";
 
 /**
  * Create a set of nested layers with commands
@@ -49,7 +42,7 @@ export function createTrackedKey({
   toIfAloneKey?: KeyCode;
   toIfHeldKey?: KeyCode;
   parameters?: Parameters;
-  conditions?: Conditions[];
+  conditions?: Condition[];
   manipulators?: Manipulator[];
 }): { description: string; manipulators: Manipulator[] } {
   const variableName = generateVariableName(name);
@@ -116,7 +109,7 @@ export function duplicateLayer(
 export interface LayerCommand {
   to: To[];
   description?: string;
-  conditions?: Conditions[];
+  conditions?: Condition[];
 }
 
 export type LayerKeySublayer = Partial<
@@ -281,7 +274,7 @@ export function generateVariableName(keyOrName: KeyCode | string) {
   return `${keyOrName}_pressed`;
 }
 
-export function trackedKeyActive(name: string): Conditions[] {
+export function trackedKeyActive(name: string): Condition[] {
   return [
     {
       name: generateVariableName(name),
@@ -291,7 +284,7 @@ export function trackedKeyActive(name: string): Conditions[] {
   ];
 }
 
-export function trackedKeyInactive(name: string): Conditions[] {
+export function trackedKeyInactive(name: string): Condition[] {
   return [
     {
       name: generateVariableName(name),
@@ -360,7 +353,7 @@ export function app(name: string): LayerCommand {
  */
 export function withConditions<T extends Manipulator | LayerCommand>(
   commandOrManipulator: T,
-  conditions: Conditions[]
+  conditions: Condition[]
 ) {
   return {
     ...commandOrManipulator,

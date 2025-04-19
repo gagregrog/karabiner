@@ -1,21 +1,21 @@
 import { INTEL_MAC_ID } from "./identifiers";
-import { Conditions } from "./types";
+import { Condition } from "./types";
 
-export const isNotIntelCondition: Conditions[] = [
+export const isNotIntelCondition: Condition[] = [
   {
     type: "device_exists_unless",
     identifiers: [INTEL_MAC_ID],
   },
 ];
 
-export const isIntelCondition: Conditions[] = [
+export const isIntelCondition: Condition[] = [
   {
     type: "device_exists_if",
     identifiers: [INTEL_MAC_ID],
   },
 ];
 
-export const isbuiltInCondition: Conditions[] = [
+export const isbuiltInCondition: Condition[] = [
   {
     type: "device_if",
     identifiers: [

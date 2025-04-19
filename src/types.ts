@@ -37,7 +37,7 @@ export interface Manipulator {
   to_if_alone?: To[];
   to_if_held_down?: To[];
   parameters?: Parameters;
-  conditions?: Conditions[];
+  conditions?: Condition[];
 }
 
 export interface Parameters {
@@ -46,7 +46,7 @@ export interface Parameters {
   "basic.to_if_held_down_threshold_milliseconds"?: number;
 }
 
-export type Conditions =
+export type Condition =
   | FrontMostApplicationCondition
   | DeviceCondition
   | KeybaordTypeCondition
