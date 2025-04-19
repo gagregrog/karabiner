@@ -4,15 +4,14 @@ import {
   trackedKeyActive,
   trackedKeyInactive,
 } from "../utils";
-import { LAYERS_NAME } from "./spaceLayers";
+import { CAPS_MOD, LAYERS_NAME } from "./variableNames";
 
-const modName = "caps_control";
 const heldKey = "left_control" as const;
 
 export const capsControl = createTrackedKey({
   description:
     "Change capslock to left_ctrl. Post escape if pressed alone, MNEI to arrow keys when caps_lock held",
-  name: modName,
+  name: CAPS_MOD,
   fromKey: "caps_lock",
   toIfAloneKey: "escape",
   toIfHeldKey: heldKey,
@@ -48,7 +47,7 @@ function remap(
 ): Manipulator {
   return {
     description: description || `${fromKey} -> ${toKey}`,
-    conditions: trackedKeyActive(modName),
+    conditions: trackedKeyActive(CAPS_MOD),
     from: {
       key_code: fromKey,
       modifiers: { mandatory: [heldKey, ...fromModifiers] },

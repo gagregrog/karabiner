@@ -1,5 +1,5 @@
 import { KeyCode } from "../types";
-import { to, duplicateLayer, makeLayers } from "../utils";
+import { to, duplicateLayer, makeLayers, trackedKeyInactive } from "../utils";
 import { applicationsLayer } from "./sublayers/applications";
 import { browseLayer } from "./sublayers/browse";
 import { numpadLayer } from "./sublayers/numpad";
@@ -8,8 +8,7 @@ import { systemLayer } from "./sublayers/system";
 import { windexLayer } from "./sublayers/windex";
 import { yabaiLayer } from "./sublayers/yabai";
 import { yabaiMovementLayer } from "./sublayers/yabaiMovement";
-
-export const LAYERS_NAME = "layers";
+import { LAYERS_NAME } from "./variableNames";
 
 const activators: KeyCode[] = ["spacebar", "delete_or_backspace"];
 
