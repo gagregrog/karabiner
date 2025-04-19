@@ -44,6 +44,7 @@ export function createTrackedKey({
   name,
   description,
   fromKey,
+  toKey,
   toIfAloneKey,
   toIfHeldKey,
   parameters,
@@ -53,6 +54,7 @@ export function createTrackedKey({
   name: string;
   description: string;
   fromKey: KeyCode;
+  toKey?: KeyCode;
   toIfAloneKey?: KeyCode;
   toIfHeldKey?: KeyCode;
   parameters?: Parameters;
@@ -76,6 +78,9 @@ export function createTrackedKey({
               value: VAR_ON,
             },
           },
+          // the toKey must be triggered *after* the variable is set, as
+          // the "to" events are cancelled as a new event is encountered
+          ...(toKey ? to(toKey).to : []),
         ],
         to_after_key_up: [
           {

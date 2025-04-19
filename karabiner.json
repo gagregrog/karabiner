@@ -73,6 +73,9 @@
                       "name": "shift_pressed",
                       "value": 1
                     }
+                  },
+                  {
+                    "key_code": "left_shift"
                   }
                 ],
                 "to_after_key_up": [
@@ -83,14 +86,6 @@
                     }
                   }
                 ],
-                "to_if_held_down": [
-                  {
-                    "key_code": "left_shift"
-                  }
-                ],
-                "parameters": {
-                  "basic.to_if_held_down_threshold_milliseconds": 0
-                },
                 "conditions": [
                   {
                     "name": "layers_pressed",
@@ -126,6 +121,9 @@
                       "name": "shift_pressed",
                       "value": 1
                     }
+                  },
+                  {
+                    "key_code": "right_shift"
                   }
                 ],
                 "to_after_key_up": [
@@ -136,14 +134,6 @@
                     }
                   }
                 ],
-                "to_if_held_down": [
-                  {
-                    "key_code": "right_shift"
-                  }
-                ],
-                "parameters": {
-                  "basic.to_if_held_down_threshold_milliseconds": 0
-                },
                 "conditions": [
                   {
                     "name": "layers_pressed",

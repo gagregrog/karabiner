@@ -11,11 +11,7 @@ export const shiftMod = (["left_shift", "right_shift"] as const).map(
       description: `Track when ${shiftKey} is pressed in order to disable spaceLayers`,
       name: SHIFT_MOD,
       fromKey: shiftKey,
-      toIfHeldKey: shiftKey,
-      parameters: {
-        // ensure that shift is always held right away
-        "basic.to_if_held_down_threshold_milliseconds": 0,
-      },
+      toKey: shiftKey,
       conditions: trackedKeyInactive(LAYERS_NAME),
     })
 );
