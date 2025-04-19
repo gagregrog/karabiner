@@ -5,9 +5,22 @@ import { To, KeyCode, Manipulator, Rule, Parameters, Condition } from "./types";
  * Create a set of nested layers with commands
  */
 export function makeLayers(
+  /**
+   * name is used to track the topmost layer activator
+   */
   name: string,
+  /**
+   * activatedBy indicates which key will be pressed first to engage the sublayers
+   */
   activatedBy: KeyCode | KeyCode[],
-  sublayers: Sublayers
+  /**
+   * sublayers allow you to map individual key behavior or create a layer of functionality one level deeper
+   */
+  sublayers: Sublayers,
+  /**
+   * conditions allows you to set rules for when the topmost layer should be activated
+   */
+  conditions: Condition[]
 ): Rule[] {
   const activators = Array.isArray(activatedBy) ? activatedBy : [activatedBy];
   return [
@@ -17,6 +30,7 @@ export function makeLayers(
         description: `Primary ${name} activator`,
         fromKey,
         toIfAloneKey: fromKey,
+        conditions,
       })
     ),
     ...createSubLayers(name, sublayers),
