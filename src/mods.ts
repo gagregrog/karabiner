@@ -1,11 +1,11 @@
-import { KeyCode, ModifiersKeys } from "./types";
+import { KeyCode, ModifierKey } from "./types";
 import { LayerCommand } from "./utils";
 
 /**
  * Modify a keypress to include left_control, left_alt, and left_gui
  */
 export function lcag(key: KeyCode, description?: string): LayerCommand {
-  const modifiers: ModifiersKeys[] = ["left_control", "left_alt", "left_gui"];
+  const modifiers: ModifierKey[] = ["left_control", "left_alt", "left_gui"];
   return addMods(key, modifiers, description);
 }
 
@@ -13,7 +13,7 @@ export function lcag(key: KeyCode, description?: string): LayerCommand {
  * Modify a keypress to include left_control
  */
 export function control(key: KeyCode, description?: string): LayerCommand {
-  const modifiers: ModifiersKeys[] = ["left_control"];
+  const modifiers: ModifierKey[] = ["left_control"];
   return addMods(key, modifiers, description);
 }
 
@@ -21,7 +21,7 @@ export function control(key: KeyCode, description?: string): LayerCommand {
  * Modify a keypress to include left_alt
  */
 export function alt(key: KeyCode, description?: string): LayerCommand {
-  const modifiers: ModifiersKeys[] = ["left_alt"];
+  const modifiers: ModifierKey[] = ["left_alt"];
   return addMods(key, modifiers, description);
 }
 
@@ -29,7 +29,7 @@ export function alt(key: KeyCode, description?: string): LayerCommand {
  * Modify a keypress to include left_gui
  */
 export function gui(key: KeyCode, description?: string): LayerCommand {
-  const modifiers: ModifiersKeys[] = ["left_gui"];
+  const modifiers: ModifierKey[] = ["left_gui"];
   return addMods(key, modifiers, description);
 }
 
@@ -37,7 +37,7 @@ export function gui(key: KeyCode, description?: string): LayerCommand {
  * Modify a keypress to include left_alt and left_shift
  */
 export function altShift(key: KeyCode, description?: string): LayerCommand {
-  const modifiers: ModifiersKeys[] = ["left_alt", "left_shift"];
+  const modifiers: ModifierKey[] = ["left_alt", "left_shift"];
   return addMods(key, modifiers, description);
 }
 
@@ -45,7 +45,7 @@ export function altShift(key: KeyCode, description?: string): LayerCommand {
  * Modify a keypress to include left_alt, left_shift, and left_control
  */
 export function meh(key: KeyCode, description?: string): LayerCommand {
-  const modifiers: ModifiersKeys[] = ["left_alt", "left_shift", "left_control"];
+  const modifiers: ModifierKey[] = ["left_alt", "left_shift", "left_control"];
   return addMods(key, modifiers, description);
 }
 
@@ -53,7 +53,7 @@ export function meh(key: KeyCode, description?: string): LayerCommand {
  * Modify a keypress to include left_alt, left_shift, left_control, and left_command
  */
 export function hyper(key: KeyCode, description?: string): LayerCommand {
-  const modifiers: ModifiersKeys[] = [
+  const modifiers: ModifierKey[] = [
     "left_alt",
     "left_shift",
     "left_control",
@@ -67,7 +67,7 @@ export function hyper(key: KeyCode, description?: string): LayerCommand {
  */
 export function addMods(
   key: KeyCode,
-  modifiers: ModifiersKeys[],
+  modifiers: ModifierKey[],
   description?: string
 ): LayerCommand {
   return {
@@ -81,6 +81,6 @@ export function addMods(
   };
 }
 
-function describeMods(key: KeyCode, modifiers: ModifiersKeys[]) {
+function describeMods(key: KeyCode, modifiers: ModifierKey[]) {
   return `${key} -> ${key} + ${modifiers.join(" + ")}`;
 }

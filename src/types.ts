@@ -121,7 +121,7 @@ export interface SimultaneousOptions {
   detect_key_down_uninterruptedly?: boolean;
 }
 
-export type ModifiersKeys =
+export type ModifierKey =
   | "caps_lock"
   | "left_command"
   | "left_control"
@@ -150,13 +150,13 @@ export interface From {
 }
 
 export interface Modifiers {
-  optional?: ModifiersKeys[];
-  mandatory?: ModifiersKeys[];
+  optional?: ModifierKey[];
+  mandatory?: ModifierKey[];
 }
 
 export interface To {
   key_code?: KeyCode;
-  modifiers?: ModifiersKeys[];
+  modifiers?: ModifierKey[];
   shell_command?: string;
   set_variable?: {
     name: string;

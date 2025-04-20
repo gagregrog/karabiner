@@ -1,5 +1,13 @@
 import { VAR_OFF, VAR_ON } from "./constants";
-import { To, KeyCode, Manipulator, Rule, Parameters, Condition } from "./types";
+import {
+  To,
+  KeyCode,
+  Manipulator,
+  Rule,
+  Parameters,
+  Condition,
+  ModifierKey,
+} from "./types";
 
 /**
  * Create a set of nested layers with commands
@@ -353,10 +361,10 @@ export function shell(
 /**
  * Simple remap from one key to another
  */
-export function to(keyCode: KeyCode): LayerCommand {
+export function to(keyCode: KeyCode, modifiers?: ModifierKey[]): LayerCommand {
   return {
     description: `To ${keyCode}`,
-    to: [{ key_code: keyCode }],
+    to: [{ key_code: keyCode, modifiers }],
   };
 }
 

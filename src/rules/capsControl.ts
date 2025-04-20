@@ -1,4 +1,4 @@
-import { KeyCode, Manipulator, ModifiersKeys } from "../types";
+import { KeyCode, Manipulator, ModifierKey } from "../types";
 import {
   createTrackedKey,
   trackedKeyActive,
@@ -41,8 +41,8 @@ function remap(
     toModifiers = [],
   }: {
     description?: string;
-    fromModifiers?: ModifiersKeys[];
-    toModifiers?: ModifiersKeys[];
+    fromModifiers?: ModifierKey[];
+    toModifiers?: ModifierKey[];
   } = {}
 ): Manipulator {
   return {

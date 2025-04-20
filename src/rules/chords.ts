@@ -1,5 +1,5 @@
 import { isbuiltInCondition } from "../conditions";
-import { KeyCode, Manipulator, ModifiersKeys, Rule } from "../types";
+import { KeyCode, Manipulator, ModifierKey, Rule } from "../types";
 import { withConditions } from "../utils";
 
 export const chords: Rule = {
@@ -34,7 +34,7 @@ export const chords: Rule = {
 function makeChord(
   fromKeys: KeyCode[],
   toKey: KeyCode,
-  toModifiers: ModifiersKeys[] = []
+  toModifiers: ModifierKey[] = []
 ): Manipulator {
   return {
     description: `${fromKeys.join(" + ")} -> ${[toKey, ...toModifiers].join(
