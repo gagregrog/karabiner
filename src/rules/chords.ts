@@ -1,4 +1,4 @@
-import { isbuiltInCondition } from "../conditions";
+import { isBuiltInCondition } from "../conditions";
 import { KeyCode, Manipulator, ModifierKey, Rule } from "../types";
 import { withConditions } from "../utils";
 
@@ -23,7 +23,7 @@ export const chords: Rule = {
     makeChord(["r", "i"], "f22"),
     makeChord(["s", "e"], "f23"),
     makeChord(["t", "n"], "f24"),
-  ].map((manipulator) => withConditions(manipulator, isbuiltInCondition)),
+  ].map((manipulator) => withConditions(manipulator, isBuiltInCondition)),
 };
 
 function makeChord(

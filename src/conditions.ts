@@ -15,7 +15,7 @@ export const isIntelCondition: Condition[] = [
   },
 ];
 
-export const isbuiltInCondition: Condition[] = [
+export const isBuiltInCondition: Condition[] = [
   {
     type: "device_if",
     identifiers: [
