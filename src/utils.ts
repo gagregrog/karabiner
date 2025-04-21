@@ -387,3 +387,66 @@ export function withConditions<T extends Manipulator | LayerCommand>(
     conditions: [...(commandOrManipulator.conditions || []), ...conditions],
   };
 }
+
+export type Mapping = {
+  toKey: KeyCode;
+  description?: string;
+  toIfAloneKey?: KeyCode;
+  toIfHeldKey?: KeyCode;
+  toModifiers?: ModifierKey[];
+  fromModifiers?: ModifierKey[];
+  parameters?: Parameters;
+  conditions?: Condition[];
+};
+
+/**
+ * Map from one key action to another
+ */
+export function remap(
+  from: KeyCode | KeyCode[],
+  {
+    description,
+    toKey,
+    toIfAloneKey,
+    toIfHeldKey,
+    toModifiers = [],
+    fromModifiers,
+    parameters,
+    conditions,
+  }: Mapping
+): Manipulator {
+  const isChord = Array.isArray(from);
+  return {
+    description:
+      description ||
+      `${asArray<string>(from)
+        .concat(fromModifiers || [])
+        .join(" + ")} -> ${[toKey, ...toModifiers].join(" + ")}`,
+    from: {
+      ...(isChord
+        ? {
+            simultaneous: from.map((key_code) => ({ key_code })),
+          }
+        : { key_code: from }),
+      modifiers: {
+        optional: ["any"],
+        mandatory: fromModifiers,
+      },
+    },
+    to: [{ key_code: toKey, modifiers: toModifiers }],
+    ...(toIfAloneKey && { to_if_alone: [{ key_code: toIfAloneKey }] }),
+    ...(toIfHeldKey && { to_if_held_down: [{ key_code: toIfHeldKey }] }),
+    parameters: isChord
+      ? {
+          "basic.simultaneous_threshold_milliseconds": 25,
+          ...parameters,
+        }
+      : parameters,
+    conditions,
+    type: "basic",
+  };
+}
+
+function asArray<T>(thingOrThings: T | T[]): T[] {
+  return Array.isArray(thingOrThings) ? thingOrThings : [thingOrThings];
+}

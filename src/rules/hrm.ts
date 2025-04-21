@@ -16,6 +16,8 @@ export const homeRowMods: Rule = {
   ],
 };
 
+// Note: while technically this works, it makes regular typing
+// almost impossible, and should not be used
 function makeHrm(fromKey: KeyCode, toKey: KeyCode): Manipulator {
   return {
     description: `${fromKey} -> ${toKey}`,

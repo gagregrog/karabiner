@@ -1,6 +1,7 @@
-import { KeyCode, Manipulator, ModifierKey } from "../types";
+import { KeyCode, Manipulator } from "../types";
 import {
   createTrackedKey,
+  remap,
   trackedKeyActive,
   trackedKeyInactive,
 } from "../utils";
@@ -22,37 +23,20 @@ export const capsControl = createTrackedKey({
   },
   manipulators: [
     // note that these remappings occur *after* simple modification remappings, so "n" is actually "j" if QWERTY remapped to ColemakDH
-    remap("m", "left_arrow"),
-    remap("n", "down_arrow"),
-    remap("e", "up_arrow"),
-    remap("i", "right_arrow"),
+    capsControlManipulator("m", "left_arrow"),
+    capsControlManipulator("n", "down_arrow"),
+    capsControlManipulator("e", "up_arrow"),
+    capsControlManipulator("i", "right_arrow"),
   ],
 });
 
 /**
  * Remap a key while the caps_control modifier is active
  */
-function remap(
-  fromKey: KeyCode,
-  toKey: KeyCode,
-  {
-    description = "",
-    fromModifiers = [],
-    toModifiers = [],
-  }: {
-    description?: string;
-    fromModifiers?: ModifierKey[];
-    toModifiers?: ModifierKey[];
-  } = {}
-): Manipulator {
-  return {
-    description: description || `${fromKey} -> ${toKey}`,
+function capsControlManipulator(fromKey: KeyCode, toKey: KeyCode): Manipulator {
+  return remap(fromKey, {
+    toKey,
     conditions: trackedKeyActive(CAPS_MOD),
-    from: {
-      key_code: fromKey,
-      modifiers: { mandatory: [heldKey, ...fromModifiers] },
-    },
-    to: [{ key_code: toKey, modifiers: toModifiers }],
-    type: "basic",
-  };
+    fromModifiers: [heldKey],
+  });
 }

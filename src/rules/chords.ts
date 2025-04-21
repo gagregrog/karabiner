@@ -1,6 +1,7 @@
 import { isBuiltInCondition } from "../conditions";
+import { homeRowAppClick, homeRowAppScroll } from "./mappings";
 import { KeyCode, Manipulator, ModifierKey, Rule } from "../types";
-import { withConditions } from "../utils";
+import { remap, withConditions } from "../utils";
 
 export const chords: Rule = {
   description: "Chords for built in keyboard only",
@@ -17,12 +18,8 @@ export const chords: Rule = {
     makeChord(["c", "d"], "left_command", ["left_shift"]),
     makeChord(["comma", "period"], "right_command", ["right_option"]),
     makeChord(["x", "c"], "left_command", ["left_option"]),
-    // mapping hrm chords to the same f-keys that qmk will send for hrm combos
-    // these are triggered when the same hrm modifier is activated simultaneously
-    makeChord(["a", "o"], "f21"),
-    makeChord(["r", "i"], "f22"),
-    makeChord(["s", "e"], "f23"),
-    makeChord(["t", "n"], "f24"),
+    remap(["s", "e"], homeRowAppClick),
+    remap(["t", "n"], homeRowAppScroll),
   ].map((manipulator) => withConditions(manipulator, isBuiltInCondition)),
 };
 
@@ -31,18 +28,8 @@ function makeChord(
   toKey: KeyCode,
   toModifiers: ModifierKey[] = []
 ): Manipulator {
-  return {
-    description: `${fromKeys.join(" + ")} -> ${[toKey, ...toModifiers].join(
-      " + "
-    )}`,
-    from: {
-      simultaneous: fromKeys.map((key_code) => ({ key_code })),
-      modifiers: { optional: ["any"] },
-    },
-    to: [{ key_code: toKey, modifiers: toModifiers }],
-    parameters: {
-      "basic.simultaneous_threshold_milliseconds": 25,
-    },
-    type: "basic",
-  };
+  return remap(fromKeys, {
+    toKey,
+    toModifiers,
+  });
 }

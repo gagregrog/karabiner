@@ -1,33 +1,18 @@
 import { Rule } from "../types";
+import { remap } from "../utils";
 
 export const commandCommand: Rule = {
   description: "Both command keys to command+tab (single press)",
   manipulators: [
-    {
-      from: {
-        key_code: "left_command",
-        modifiers: { mandatory: ["right_command"] },
-      },
-      to: [
-        {
-          key_code: "tab",
-          modifiers: ["left_command"],
-        },
-      ],
-      type: "basic",
-    },
-    {
-      from: {
-        key_code: "right_command",
-        modifiers: { mandatory: ["left_command"] },
-      },
-      to: [
-        {
-          key_code: "tab",
-          modifiers: ["left_command"],
-        },
-      ],
-      type: "basic",
-    },
+    remap("left_command", {
+      fromModifiers: ["right_command"],
+      toKey: "tab",
+      toModifiers: ["left_command"],
+    }),
+    remap("right_command", {
+      fromModifiers: ["left_command"],
+      toKey: "tab",
+      toModifiers: ["right_command"],
+    }),
   ],
 };

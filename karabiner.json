@@ -15,9 +15,13 @@
             "description": "Both command keys to command+tab (single press)",
             "manipulators": [
               {
+                "description": "left_command + right_command -> tab + left_command",
                 "from": {
                   "key_code": "left_command",
                   "modifiers": {
+                    "optional": [
+                      "any"
+                    ],
                     "mandatory": [
                       "right_command"
                     ]
@@ -34,9 +38,13 @@
                 "type": "basic"
               },
               {
+                "description": "right_command + left_command -> tab + right_command",
                 "from": {
                   "key_code": "right_command",
                   "modifiers": {
+                    "optional": [
+                      "any"
+                    ],
                     "mandatory": [
                       "left_command"
                     ]
@@ -46,7 +54,7 @@
                   {
                     "key_code": "tab",
                     "modifiers": [
-                      "left_command"
+                      "right_command"
                     ]
                   }
                 ],
@@ -5022,7 +5030,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5033,7 +5040,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "e + i -> right_command",
@@ -5061,7 +5069,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5072,7 +5079,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "l + u -> right_alt",
@@ -5100,7 +5108,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5111,7 +5118,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "u + y -> right_control",
@@ -5139,7 +5147,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5150,7 +5157,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "s + t -> left_shift",
@@ -5178,7 +5186,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5189,7 +5196,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "s + r -> left_command",
@@ -5217,7 +5225,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5228,7 +5235,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "f + p -> left_alt",
@@ -5256,7 +5264,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5267,7 +5274,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "w + f -> left_control",
@@ -5295,7 +5303,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5306,7 +5313,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "h + comma -> right_command + right_shift",
@@ -5336,7 +5344,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5347,7 +5354,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "c + d -> left_command + left_shift",
@@ -5377,7 +5385,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5388,7 +5395,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "comma + period -> right_command + right_option",
@@ -5418,7 +5426,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5429,7 +5436,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
                 "description": "x + c -> left_command + left_option",
@@ -5459,7 +5467,6 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5469,89 +5476,12 @@
                         "is_built_in_keyboard": true
                       }
                     ]
-                  }
-                ]
-              },
-              {
-                "description": "a + o -> f21",
-                "from": {
-                  "simultaneous": [
-                    {
-                      "key_code": "a"
-                    },
-                    {
-                      "key_code": "o"
-                    }
-                  ],
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "f21",
-                    "modifiers": []
                   }
                 ],
-                "parameters": {
-                  "basic.simultaneous_threshold_milliseconds": 25
-                },
-                "type": "basic",
-                "conditions": [
-                  {
-                    "type": "device_if",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "is_built_in_keyboard": true
-                      }
-                    ]
-                  }
-                ]
+                "type": "basic"
               },
               {
-                "description": "r + i -> f22",
-                "from": {
-                  "simultaneous": [
-                    {
-                      "key_code": "r"
-                    },
-                    {
-                      "key_code": "i"
-                    }
-                  ],
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "f22",
-                    "modifiers": []
-                  }
-                ],
-                "parameters": {
-                  "basic.simultaneous_threshold_milliseconds": 25
-                },
-                "type": "basic",
-                "conditions": [
-                  {
-                    "type": "device_if",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "is_built_in_keyboard": true
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "description": "s + e -> f23",
+                "description": "Homerow.app click shortcut",
                 "from": {
                   "simultaneous": [
                     {
@@ -5569,14 +5499,17 @@
                 },
                 "to": [
                   {
-                    "key_code": "f23",
-                    "modifiers": []
+                    "key_code": "delete_or_backspace",
+                    "modifiers": [
+                      "left_shift",
+                      "left_command",
+                      "left_alt"
+                    ]
                   }
                 ],
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5587,10 +5520,11 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               },
               {
-                "description": "t + n -> f24",
+                "description": "Homerow.app scroll shortcut",
                 "from": {
                   "simultaneous": [
                     {
@@ -5608,14 +5542,16 @@
                 },
                 "to": [
                   {
-                    "key_code": "f24",
-                    "modifiers": []
+                    "key_code": "delete_or_backspace",
+                    "modifiers": [
+                      "left_shift",
+                      "left_command"
+                    ]
                   }
                 ],
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
-                "type": "basic",
                 "conditions": [
                   {
                     "type": "device_if",
@@ -5626,7 +5562,8 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "type": "basic"
               }
             ]
           },
@@ -5688,17 +5625,13 @@
                 "type": "basic"
               },
               {
-                "description": "m -> left_arrow",
-                "conditions": [
-                  {
-                    "name": "caps_pressed",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
+                "description": "m + left_control -> left_arrow",
                 "from": {
                   "key_code": "m",
                   "modifiers": {
+                    "optional": [
+                      "any"
+                    ],
                     "mandatory": [
                       "left_control"
                     ]
@@ -5710,10 +5643,6 @@
                     "modifiers": []
                   }
                 ],
-                "type": "basic"
-              },
-              {
-                "description": "n -> down_arrow",
                 "conditions": [
                   {
                     "name": "caps_pressed",
@@ -5721,9 +5650,16 @@
                     "value": 1
                   }
                 ],
+                "type": "basic"
+              },
+              {
+                "description": "n + left_control -> down_arrow",
                 "from": {
                   "key_code": "n",
                   "modifiers": {
+                    "optional": [
+                      "any"
+                    ],
                     "mandatory": [
                       "left_control"
                     ]
@@ -5735,10 +5671,6 @@
                     "modifiers": []
                   }
                 ],
-                "type": "basic"
-              },
-              {
-                "description": "e -> up_arrow",
                 "conditions": [
                   {
                     "name": "caps_pressed",
@@ -5746,9 +5678,16 @@
                     "value": 1
                   }
                 ],
+                "type": "basic"
+              },
+              {
+                "description": "e + left_control -> up_arrow",
                 "from": {
                   "key_code": "e",
                   "modifiers": {
+                    "optional": [
+                      "any"
+                    ],
                     "mandatory": [
                       "left_control"
                     ]
@@ -5760,10 +5699,6 @@
                     "modifiers": []
                   }
                 ],
-                "type": "basic"
-              },
-              {
-                "description": "i -> right_arrow",
                 "conditions": [
                   {
                     "name": "caps_pressed",
@@ -5771,9 +5706,16 @@
                     "value": 1
                   }
                 ],
+                "type": "basic"
+              },
+              {
+                "description": "i + left_control -> right_arrow",
                 "from": {
                   "key_code": "i",
                   "modifiers": {
+                    "optional": [
+                      "any"
+                    ],
                     "mandatory": [
                       "left_control"
                     ]
@@ -5785,6 +5727,13 @@
                     "modifiers": []
                   }
                 ],
+                "conditions": [
+                  {
+                    "name": "caps_pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
                 "type": "basic"
               }
             ]
@@ -5793,7 +5742,7 @@
             "description": "Make f keys do cool things",
             "manipulators": [
               {
-                "description": "f23 -> delete_or_backspace + left_shift + left_command + left_alt",
+                "description": "Homerow.app click shortcut",
                 "from": {
                   "key_code": "f23",
                   "modifiers": {
@@ -5815,7 +5764,7 @@
                 "type": "basic"
               },
               {
-                "description": "f24 -> delete_or_backspace + left_shift + left_command",
+                "description": "Homerow.app scroll shortcut",
                 "from": {
                   "key_code": "f24",
                   "modifiers": {
