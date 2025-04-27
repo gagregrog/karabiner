@@ -1,4 +1,8 @@
-import { isBuiltInCondition } from "../conditions";
+import {
+  isBuiltInCondition,
+  isIntelCondition,
+  isNotIntelCondition,
+} from "../conditions";
 import { homeRowAppClick, homeRowAppScroll } from "./mappings";
 import { KeyCode, Manipulator, ModifierKey, Rule } from "../types";
 import { remap, withConditions } from "../utils";
@@ -18,7 +22,8 @@ export const chords: Rule = {
     makeChord(["c", "d"], "left_command", ["left_shift"]),
     makeChord(["comma", "period"], "right_command", ["right_option"]),
     makeChord(["x", "c"], "left_command", ["left_option"]),
-    remap(["s", "e"], homeRowAppClick),
+    withConditions(makeChord(["s", "e"], "left_command"), isNotIntelCondition), // used to trigger Mouseless **not yet supported on intel**
+    withConditions(remap(["t", "n"], homeRowAppClick), isIntelCondition),
     remap(["t", "n"], homeRowAppScroll),
   ].map((manipulator) => withConditions(manipulator, isBuiltInCondition)),
 };

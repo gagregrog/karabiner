@@ -5481,7 +5481,7 @@
                 "type": "basic"
               },
               {
-                "description": "Homerow.app click shortcut",
+                "description": "s + e -> left_command",
                 "from": {
                   "simultaneous": [
                     {
@@ -5489,6 +5489,55 @@
                     },
                     {
                       "key_code": "e"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command",
+                    "modifiers": []
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 25
+                },
+                "conditions": [
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "Homerow.app click shortcut",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "t"
+                    },
+                    {
+                      "key_code": "n"
                     }
                   ],
                   "modifiers": {
@@ -5511,6 +5560,16 @@
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
                 "conditions": [
+                  {
+                    "type": "device_exists_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  },
                   {
                     "type": "device_if",
                     "identifiers": [
