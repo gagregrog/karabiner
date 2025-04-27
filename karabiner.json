@@ -5481,55 +5481,6 @@
                 "type": "basic"
               },
               {
-                "description": "s + e -> left_command",
-                "from": {
-                  "simultaneous": [
-                    {
-                      "key_code": "s"
-                    },
-                    {
-                      "key_code": "e"
-                    }
-                  ],
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_command",
-                    "modifiers": []
-                  }
-                ],
-                "parameters": {
-                  "basic.simultaneous_threshold_milliseconds": 25
-                },
-                "conditions": [
-                  {
-                    "type": "device_exists_unless",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "product_id": 632,
-                        "vendor_id": 1452
-                      }
-                    ]
-                  },
-                  {
-                    "type": "device_if",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "is_built_in_keyboard": true
-                      }
-                    ]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
                 "description": "Homerow.app click shortcut",
                 "from": {
                   "simultaneous": [
@@ -5612,6 +5563,165 @@
                   "basic.simultaneous_threshold_milliseconds": 25
                 },
                 "conditions": [
+                  {
+                    "type": "device_exists_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "s + e -> f19",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "s"
+                    },
+                    {
+                      "key_code": "e"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f19",
+                    "modifiers": []
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 25
+                },
+                "conditions": [
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "t + n -> f20",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "t"
+                    },
+                    {
+                      "key_code": "n"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f20",
+                    "modifiers": []
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 25
+                },
+                "conditions": [
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "r + i -> f18 + left_command",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "r"
+                    },
+                    {
+                      "key_code": "i"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f18",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 25
+                },
+                "conditions": [
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  },
                   {
                     "type": "device_if",
                     "identifiers": [
@@ -5820,6 +5930,18 @@
                     ]
                   }
                 ],
+                "conditions": [
+                  {
+                    "type": "device_exists_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
                 "type": "basic"
               },
               {
@@ -5838,6 +5960,110 @@
                     "modifiers": [
                       "left_shift",
                       "left_command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "device_exists_if",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "f23 -> f19",
+                "from": {
+                  "key_code": "f23",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f19",
+                    "modifiers": []
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "f24 -> f20",
+                "from": {
+                  "key_code": "f24",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f20",
+                    "modifiers": []
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "f22 -> f18 + left_command",
+                "from": {
+                  "key_code": "f22",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f18",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
                     ]
                   }
                 ],

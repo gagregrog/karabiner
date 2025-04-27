@@ -22,9 +22,20 @@ export const chords: Rule = {
     makeChord(["c", "d"], "left_command", ["left_shift"]),
     makeChord(["comma", "period"], "right_command", ["right_option"]),
     makeChord(["x", "c"], "left_command", ["left_option"]),
-    withConditions(makeChord(["s", "e"], "left_command"), isNotIntelCondition), // used to trigger Mouseless **not yet supported on intel**
     withConditions(remap(["t", "n"], homeRowAppClick), isIntelCondition),
-    remap(["t", "n"], homeRowAppScroll),
+    withConditions(remap(["t", "n"], homeRowAppScroll), isIntelCondition),
+    withConditions(
+      makeChord(["s", "e"], "f19"), // used to trigger Mouseless click
+      isNotIntelCondition // **not yet supported on intel**
+    ),
+    withConditions(
+      makeChord(["t", "n"], "f20"), // used to trigger Mouseless scrolling
+      isNotIntelCondition // **not yet supported on intel**
+    ),
+    withConditions(
+      makeChord(["r", "i"], "f18", ["left_command"]), // used to trigger Ice search
+      isNotIntelCondition // **Ice not supported on intel**
+    ),
   ].map((manipulator) => withConditions(manipulator, isBuiltInCondition)),
 };
 
