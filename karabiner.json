@@ -4858,30 +4858,6 @@
               {
                 "to": [
                   {
-                    "shell_command": "open raycast://script-commands/dismiss-notifications"
-                  }
-                ],
-                "description": "Open raycast://script-commands/dismiss-notifications",
-                "type": "basic",
-                "from": {
-                  "key_code": "n",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "r_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
                     "shell_command": "open raycast://script-commands/copy-focused-finder-window-path"
                   }
                 ],
@@ -4930,13 +4906,13 @@
               {
                 "to": [
                   {
-                    "shell_command": "open raycast://script-commands/view-scripting-dictionary"
+                    "shell_command": "open 'raycast://script-commands/audio-device-manager?arguments=LG&arguments=Yeti'"
                   }
                 ],
-                "description": "Open raycast://script-commands/view-scripting-dictionary",
+                "description": "Open 'raycast://script-commands/audio-device-manager?arguments=LG&arguments=Yeti'",
                 "type": "basic",
                 "from": {
-                  "key_code": "a",
+                  "key_code": "m",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -4954,13 +4930,13 @@
               {
                 "to": [
                   {
-                    "shell_command": "open raycast://script-commands/toggle-mic"
+                    "shell_command": "open raycast://script-commands/view-scripting-dictionary"
                   }
                 ],
-                "description": "Open raycast://script-commands/toggle-mic",
+                "description": "Open raycast://script-commands/view-scripting-dictionary",
                 "type": "basic",
                 "from": {
-                  "key_code": "m",
+                  "key_code": "a",
                   "modifiers": {
                     "optional": [
                       "any"
