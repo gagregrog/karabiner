@@ -22,7 +22,7 @@ export const chords: Rule = {
     makeChord(["c", "d"], "left_command", ["left_shift"]),
     makeChord(["comma", "period"], "right_command", ["right_option"]),
     makeChord(["x", "c"], "left_command", ["left_option"]),
-    withConditions(remap(["t", "n"], homeRowAppClick), isIntelCondition),
+    withConditions(remap(["s", "e"], homeRowAppClick), isIntelCondition),
     withConditions(remap(["t", "n"], homeRowAppScroll), isIntelCondition),
     withConditions(
       makeChord(["s", "e"], "f19"), // used to trigger Mouseless click
