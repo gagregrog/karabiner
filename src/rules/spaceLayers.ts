@@ -2,7 +2,7 @@ import { KeyCode } from "../types";
 import { to, duplicateLayer, makeLayers, trackedKeyInactive } from "../utils";
 import { applicationsLayer } from "./sublayers/applications";
 import { browseLayer } from "./sublayers/browse";
-import { numpadLayer } from "./sublayers/numpad";
+import { deskLayer } from "./sublayers/desk";
 import { raycastLayer } from "./sublayers/raycast";
 import { systemLayer } from "./sublayers/system";
 import { windexLayer } from "./sublayers/windex";
@@ -22,6 +22,7 @@ export const spaceLayers = makeLayers(
     e: to("up_arrow"),
     i: to("right_arrow"),
 
+    d: deskLayer,
     b: browseLayer,
     ...duplicateLayer(["a", "o"], applicationsLayer),
     w: windexLayer,
@@ -36,7 +37,6 @@ export const spaceLayers = makeLayers(
       yabaiMovementLayer
     ),
     y: yabaiLayer,
-    d: numpadLayer,
     s: systemLayer,
     r: raycastLayer,
   },

@@ -305,6 +305,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -346,11 +351,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -414,6 +414,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -455,11 +460,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -523,6 +523,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -564,11 +569,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -632,6 +632,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -677,7 +682,112 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "d_pressed",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "layers sublayer \"d\"",
+            "manipulators": [
+              {
+                "description": "Toggle layers sublayer d",
+                "type": "basic",
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "d_pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "d_pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "a_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "return_or_enter_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "spacebar_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "delete_or_backspace_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
                     "value": 0
                   },
                   {
@@ -689,6 +799,59 @@
                     "type": "variable_if",
                     "name": "r_pressed",
                     "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "curl -d \"\" jarvis.home/goto/1"
+                  }
+                ],
+                "description": "Move Jarvis Desck down",
+                "type": "basic",
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "curl -d \"\" jarvis.home/goto/4"
+                  }
+                ],
+                "description": "Move Jarvis Desck up",
+                "type": "basic",
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 1
                   }
                 ]
               }
@@ -747,6 +910,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "a_pressed",
                     "value": 0
                   },
@@ -783,11 +951,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -958,6 +1121,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -994,11 +1162,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -1445,6 +1608,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -1481,11 +1649,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -1932,6 +2095,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -1968,11 +2136,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -2337,6 +2500,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -2373,11 +2541,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -2680,6 +2843,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -2716,11 +2884,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -3023,6 +3186,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -3059,11 +3227,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -3366,6 +3529,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -3402,11 +3570,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -3709,6 +3872,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -3745,11 +3913,6 @@
                   {
                     "type": "variable_if",
                     "name": "delete_or_backspace_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -4047,361 +4210,6 @@
             ]
           },
           {
-            "description": "layers sublayer \"d\"",
-            "manipulators": [
-              {
-                "description": "Toggle layers sublayer d",
-                "type": "basic",
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to_after_key_up": [
-                  {
-                    "set_variable": {
-                      "name": "d_pressed",
-                      "value": 0
-                    }
-                  }
-                ],
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "d_pressed",
-                      "value": 1
-                    }
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "m_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "n_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "e_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "i_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "b_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "a_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "o_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "w_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "return_or_enter_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "caps_lock_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "spacebar_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "delete_or_backspace_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "s_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "r_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "layers_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 0",
-                "to": [
-                  {
-                    "key_code": "0"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "period",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 1",
-                "to": [
-                  {
-                    "key_code": "1"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "k",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 2",
-                "to": [
-                  {
-                    "key_code": "2"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "h",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 3",
-                "to": [
-                  {
-                    "key_code": "3"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "comma",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 4",
-                "to": [
-                  {
-                    "key_code": "4"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "n",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 5",
-                "to": [
-                  {
-                    "key_code": "5"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "e",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 6",
-                "to": [
-                  {
-                    "key_code": "6"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "i",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 7",
-                "to": [
-                  {
-                    "key_code": "7"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "l",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 8",
-                "to": [
-                  {
-                    "key_code": "8"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "u",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "description": "To 9",
-                "to": [
-                  {
-                    "key_code": "9"
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "y",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "description": "layers sublayer \"s\"",
             "manipulators": [
               {
@@ -4454,6 +4262,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -4495,11 +4308,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
@@ -4747,6 +4555,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -4788,11 +4601,6 @@
                   {
                     "type": "variable_if",
                     "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
                     "value": 0
                   },
                   {
