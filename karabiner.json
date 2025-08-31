@@ -5695,73 +5695,6 @@
             "description": "Make f keys do cool things",
             "manipulators": [
               {
-                "description": "Homerow.app click shortcut",
-                "from": {
-                  "key_code": "f23",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "delete_or_backspace",
-                    "modifiers": [
-                      "left_shift",
-                      "left_command",
-                      "left_alt"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "device_exists_if",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "product_id": 632,
-                        "vendor_id": 1452
-                      }
-                    ]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "description": "Homerow.app scroll shortcut",
-                "from": {
-                  "key_code": "f24",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "delete_or_backspace",
-                    "modifiers": [
-                      "left_shift",
-                      "left_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "device_exists_if",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "product_id": 632,
-                        "vendor_id": 1452
-                      }
-                    ]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
                 "description": "f23 -> f19",
                 "from": {
                   "key_code": "f23",
@@ -5775,18 +5708,6 @@
                   {
                     "key_code": "f19",
                     "modifiers": []
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "device_exists_unless",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "product_id": 632,
-                        "vendor_id": 1452
-                      }
-                    ]
                   }
                 ],
                 "type": "basic"
@@ -5805,18 +5726,6 @@
                   {
                     "key_code": "f20",
                     "modifiers": []
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "device_exists_unless",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "product_id": 632,
-                        "vendor_id": 1452
-                      }
-                    ]
                   }
                 ],
                 "type": "basic"
