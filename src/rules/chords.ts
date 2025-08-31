@@ -1,9 +1,6 @@
-import {
-  isBuiltInCondition,
-  isIntelCondition,
-  isNotIntelCondition,
-} from "../conditions";
-import { homeRowAppClick, homeRowAppScroll } from "./mappings";
+import { isBuiltInCondition } from "../conditions";
+import { ice } from "../mappings/ice";
+import { mouseless } from "../mappings/mouseless";
 import { KeyCode, Manipulator, ModifierKey, Rule } from "../types";
 import { remap, withConditions } from "../utils";
 
@@ -22,20 +19,9 @@ export const chords: Rule = {
     makeChord(["c", "d"], "left_command", ["left_shift"]),
     makeChord(["comma", "period"], "right_command", ["right_option"]),
     makeChord(["x", "c"], "left_command", ["left_option"]),
-    withConditions(remap(["s", "e"], homeRowAppClick), isIntelCondition),
-    withConditions(remap(["t", "n"], homeRowAppScroll), isIntelCondition),
-    withConditions(
-      makeChord(["s", "e"], "f19"), // used to trigger Mouseless click
-      isNotIntelCondition // **not yet supported on intel**
-    ),
-    withConditions(
-      makeChord(["t", "n"], "f20"), // used to trigger Mouseless scrolling
-      isNotIntelCondition // **not yet supported on intel**
-    ),
-    withConditions(
-      makeChord(["r", "i"], "f18", ["left_command"]), // used to trigger Ice search
-      isNotIntelCondition // **Ice not supported on intel**
-    ),
+    remap(["s", "e"], mouseless.click),
+    remap(["t", "n"], mouseless.scroll),
+    remap(["r", "i"], ice.search),
   ].map((manipulator) => withConditions(manipulator, isBuiltInCondition)),
 };
 

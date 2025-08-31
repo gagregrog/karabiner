@@ -1,15 +1,14 @@
 import { Rule } from "../types";
-import { remap, withConditions } from "../utils";
-import { isNotIntelCondition } from "../conditions";
+import { remap } from "../utils";
+import { QMK } from "../mappings/inputs/qmk";
+import { mouseless } from "../mappings/mouseless";
+import { ice } from "../mappings/ice";
 
 export const fKeys: Rule = {
   description: "Make f keys do cool things",
   manipulators: [
-    remap("f23", { toKey: "f19" }), // used for Mouseless click
-    remap("f24", { toKey: "f20" }), // used for Mouseless scroll
-    withConditions(
-      remap("f22", { toKey: "f18", toModifiers: ["left_command"] }), // used to trigger Ice search
-      isNotIntelCondition // **Ice not supported on intel**
-    ),
+    remap(QMK.chords.command, mouseless.click),
+    remap(QMK.chords.shift, mouseless.scroll),
+    remap(QMK.chords.alt, ice.search),
   ],
 };
