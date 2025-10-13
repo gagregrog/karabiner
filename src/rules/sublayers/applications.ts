@@ -17,6 +17,7 @@ export const applicationsLayer: LayerKeySublayer = {
   n: withConditions(app("Notion"), isNotIntelCondition),
   q: app("QuickTime Player"),
   s: withConditions(app("Slack"), isNotIntelCondition),
+  h: withConditions(app("Tuple"), isNotIntelCondition),
   v: app("Visual Studio Code"),
   y: app("YT Music"),
   z: app("zoom.us"),
