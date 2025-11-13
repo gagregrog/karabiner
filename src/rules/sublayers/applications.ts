@@ -7,6 +7,7 @@ import { app, LayerKeySublayer, withConditions } from "../../utils";
 export const applicationsLayer: LayerKeySublayer = {
   p: app("1Password"),
   t: app("Alacritty"),
+  d: withConditions(app("DBeaver"), isNotIntelCondition),
   b: [
     withConditions(app("Arc"), isNotIntelCondition),
     withConditions(app("Brave Browser"), isIntelCondition),

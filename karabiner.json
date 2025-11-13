@@ -1232,6 +1232,40 @@
               {
                 "to": [
                   {
+                    "shell_command": "open -a 'DBeaver.app'"
+                  }
+                ],
+                "description": "Open -a 'DBeaver.app'",
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "a_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                }
+              },
+              {
+                "to": [
+                  {
                     "shell_command": "open -a 'Arc.app'"
                   }
                 ],
@@ -1749,6 +1783,40 @@
                     "value": 1
                   }
                 ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'DBeaver.app'"
+                  }
+                ],
+                "description": "Open -a 'DBeaver.app'",
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                }
               },
               {
                 "to": [
