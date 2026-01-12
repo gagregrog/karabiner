@@ -8,6 +8,7 @@ export const applicationsLayer: LayerKeySublayer = {
   p: app("1Password"),
   t: app("Alacritty"),
   d: withConditions(app("DBeaver"), isNotIntelCondition),
+  l: app("Logseq"),
   b: [
     withConditions(app("Arc"), isNotIntelCondition),
     withConditions(app("Brave Browser"), isIntelCondition),

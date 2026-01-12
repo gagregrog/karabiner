@@ -1511,6 +1511,30 @@
               {
                 "to": [
                   {
+                    "shell_command": "open -a 'Logseq.app'"
+                  }
+                ],
+                "description": "Open -a 'Logseq.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "a_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
                     "shell_command": "open -a 'Arc.app'"
                   }
                 ],
@@ -2052,6 +2076,30 @@
                     ]
                   }
                 }
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'Logseq.app'"
+                  }
+                ],
+                "description": "Open -a 'Logseq.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 1
+                  }
+                ]
               },
               {
                 "to": [
