@@ -21,6 +21,7 @@ export const spaceLayers = makeLayers(
     n: to("down_arrow"),
     e: to("up_arrow"),
     i: to("right_arrow"),
+    t: to("tab", ["command"]),
 
     d: deskLayer,
     b: browseLayer,
