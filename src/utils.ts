@@ -98,7 +98,12 @@ export function createTrackedKey({
             },
           },
         ],
-        ...(toIfAloneKey && { to_if_alone: [{ key_code: toIfAloneKey }] }),
+        ...(toIfAloneKey && {
+          to_if_alone: [{ key_code: toIfAloneKey }],
+          parameters: {
+            "basic.to_if_alone_timeout_milliseconds": 1000,
+          },
+        }),
         ...(toIfHeldKey && { to_if_held_down: [{ key_code: toIfHeldKey }] }),
         parameters,
         conditions: [

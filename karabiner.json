@@ -310,11 +310,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "t_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "d_pressed",
                     "value": 0
                   },
@@ -405,11 +400,6 @@
                   {
                     "type": "variable_if",
                     "name": "caps_lock_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -508,11 +498,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "t_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "d_pressed",
                     "value": 0
                   },
@@ -603,11 +588,6 @@
                   {
                     "type": "variable_if",
                     "name": "caps_lock_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -703,11 +683,6 @@
                   {
                     "type": "variable_if",
                     "name": "i_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -868,108 +843,6 @@
             ]
           },
           {
-            "description": "layers + t",
-            "manipulators": [
-              {
-                "description": "To tab",
-                "to": [
-                  {
-                    "key_code": "tab",
-                    "modifiers": [
-                      "command"
-                    ]
-                  }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "t",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "layers_pressed",
-                    "value": 1
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "m_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "n_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "e_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "i_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "caps_lock_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "t_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "d_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "b_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "a_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "o_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "w_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "y_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "s_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "r_pressed",
-                    "value": 0
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "description": "layers sublayer \"d\"",
             "manipulators": [
               {
@@ -1023,11 +896,6 @@
                   {
                     "type": "variable_if",
                     "name": "caps_lock_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -1176,11 +1044,6 @@
                   {
                     "type": "variable_if",
                     "name": "caps_lock_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -1377,11 +1240,6 @@
                   {
                     "type": "variable_if",
                     "name": "caps_lock_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -1950,11 +1808,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "t_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "d_pressed",
                     "value": 0
                   },
@@ -2519,11 +2372,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "t_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "d_pressed",
                     "value": 0
                   },
@@ -2914,11 +2762,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "t_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "d_pressed",
                     "value": 0
                   },
@@ -3294,11 +3137,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "t_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "d_pressed",
                     "value": 0
                   },
@@ -3573,11 +3411,6 @@
                   {
                     "type": "variable_if",
                     "name": "caps_lock_pressed",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -4436,15 +4269,15 @@
                     "key_code": "escape"
                   }
                 ],
+                "parameters": {
+                  "basic.to_if_alone_timeout_milliseconds": 100,
+                  "basic.to_if_held_down_threshold_milliseconds": 100
+                },
                 "to_if_held_down": [
                   {
                     "key_code": "left_control"
                   }
                 ],
-                "parameters": {
-                  "basic.to_if_alone_timeout_milliseconds": 100,
-                  "basic.to_if_held_down_threshold_milliseconds": 100
-                },
                 "conditions": [
                   {
                     "name": "layers_pressed",

@@ -28,5 +28,4 @@ export const homerowMovementKeys = {
     }),
     {} as ArrowMapping
   ),
-  t: to("tab", ["command"]),
 } satisfies Sublayers;
