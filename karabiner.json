@@ -1185,7 +1185,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "curl -X POST http://phone.home/ring/us"
+                    "shell_command": "curl -s -X POST http://phone.home/ring/us"
                   }
                 ],
                 "description": "Ring the phone",
@@ -1209,7 +1209,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "curl -X POST http://phone.home/ring/stop"
+                    "shell_command": "curl -s -X POST http://phone.home/ring/stop"
                   }
                 ],
                 "description": "Stop the phone ringing",
@@ -1257,7 +1257,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "curl -X POST http://phone.home/ring/chirp/1"
+                    "shell_command": "curl -s -X POST http://phone.home/ring/chirp/1"
                   }
                 ],
                 "description": "Chirp the phone",
@@ -1288,6 +1288,30 @@
                 "type": "basic",
                 "from": {
                   "key_code": "c",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "T=$(osascript -e 'set t to text returned of (display dialog \"Enter timer duration (e.g. 5m, 1h30m):\" default answer \"\" with title \"Phone Timer\")') && curl -s -X POST http://phone.home/timer/$T | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
+                  }
+                ],
+                "description": "Set a custom timer",
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -1439,7 +1463,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "curl -X POST http://phone.home/ring/us"
+                    "shell_command": "curl -s -X POST http://phone.home/ring/us"
                   }
                 ],
                 "description": "Ring the phone",
@@ -1463,7 +1487,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "curl -X POST http://phone.home/ring/stop"
+                    "shell_command": "curl -s -X POST http://phone.home/ring/stop"
                   }
                 ],
                 "description": "Stop the phone ringing",
@@ -1511,7 +1535,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "curl -X POST http://phone.home/ring/chirp/1"
+                    "shell_command": "curl -s -X POST http://phone.home/ring/chirp/1"
                   }
                 ],
                 "description": "Chirp the phone",
@@ -1542,6 +1566,30 @@
                 "type": "basic",
                 "from": {
                   "key_code": "c",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "l_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "T=$(osascript -e 'set t to text returned of (display dialog \"Enter timer duration (e.g. 5m, 1h30m):\" default answer \"\" with title \"Phone Timer\")') && curl -s -X POST http://phone.home/timer/$T | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
+                  }
+                ],
+                "description": "Set a custom timer",
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
                   "modifiers": {
                     "optional": [
                       "any"

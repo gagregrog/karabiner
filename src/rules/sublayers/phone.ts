@@ -12,19 +12,36 @@ export const phoneLayer: LayerKeySublayer = {
   s: phoneGet("ring/status", "Show ring status"),
   l: phonePost("ring/chirp/1", "Chirp the phone"),
   c: phonePostWithDisplay("timer/cancel", "Cancel running timer"),
+  t: phoneTimerPrompt(),
 };
+
+function phoneTimerPrompt(): LayerCommand {
+  const dialog = `osascript -e 'set t to text returned of (display dialog "Enter timer duration (e.g. 5m, 1h30m):" default answer "" with title "Phone Timer")'`;
+  return showOutput(
+    `T=$(${dialog}) && ${phoneCurl("timer/$T", true)}`,
+    "Set a custom timer"
+  );
+}
+
+function phonePostWithDisplay(
+  endpoint: string,
+  description: string
+): LayerCommand {
+  return showOutput(phoneCurl(endpoint, true), description);
+}
 
 function phonePost(endpoint: string, description: string): LayerCommand {
   return {
-    to: [{ shell_command: `curl -X POST http://${PHONE_HOST}/${endpoint}` }],
+    to: [{ shell_command: phoneCurl(endpoint, true) }],
     description,
   };
 }
 
-function phonePostWithDisplay(endpoint: string, description: string): LayerCommand {
-  return showOutput(`curl -s -X POST http://${PHONE_HOST}/${endpoint}`, description);
+function phoneGet(endpoint: string, description: string): LayerCommand {
+  return showOutput(phoneCurl(endpoint), description);
 }
 
-function phoneGet(endpoint: string, description: string): LayerCommand {
-  return showOutput(`curl -s http://${PHONE_HOST}/${endpoint}`, description);
+function phoneCurl(endpoint: string, post = false): string {
+  const method = post ? "-X POST " : "";
+  return `curl -s ${method}http://${PHONE_HOST}/${endpoint}`;
 }
