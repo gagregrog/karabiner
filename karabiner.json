@@ -315,6 +315,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -405,6 +410,11 @@
                   {
                     "type": "variable_if",
                     "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
                     "value": 0
                   },
                   {
@@ -503,6 +513,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -593,6 +608,11 @@
                   {
                     "type": "variable_if",
                     "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
                     "value": 0
                   },
                   {
@@ -688,6 +708,11 @@
                   {
                     "type": "variable_if",
                     "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
                     "value": 0
                   },
                   {
@@ -900,6 +925,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -991,6 +1021,207 @@
             ]
           },
           {
+            "description": "layers sublayer \"p\"",
+            "manipulators": [
+              {
+                "description": "Toggle layers sublayer p",
+                "type": "basic",
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "p_pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "p_pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "a_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "curl -s -X POST http://phone.home/timer/5m | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
+                  }
+                ],
+                "description": "Set a 5 minute timer",
+                "type": "basic",
+                "from": {
+                  "key_code": "5",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "curl -X POST http://phone.home/ring/us"
+                  }
+                ],
+                "description": "Ring the phone",
+                "type": "basic",
+                "from": {
+                  "key_code": "r",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "curl -s http://phone.home/ring/status | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
+                  }
+                ],
+                "description": "Show ring status",
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "curl -s -X POST http://phone.home/timer/cancel | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
+                  }
+                ],
+                "description": "Cancel running timer",
+                "type": "basic",
+                "from": {
+                  "key_code": "c",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "layers sublayer \"b\"",
             "manipulators": [
               {
@@ -1049,6 +1280,11 @@
                   {
                     "type": "variable_if",
                     "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
                     "value": 0
                   },
                   {
@@ -1245,6 +1481,11 @@
                   {
                     "type": "variable_if",
                     "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
                     "value": 0
                   },
                   {
@@ -1847,6 +2088,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -2445,6 +2691,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -2835,6 +3086,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -3210,6 +3466,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "b_pressed",
                     "value": 0
                   },
@@ -3484,6 +3745,11 @@
                   {
                     "type": "variable_if",
                     "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
                     "value": 0
                   },
                   {

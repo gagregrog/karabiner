@@ -4,6 +4,7 @@ import { applicationsLayer } from "./sublayers/applications";
 import { browseLayer } from "./sublayers/browse";
 import { deskLayer } from "./sublayers/desk";
 import { homerowMovementKeys } from "./sublayers/homerowMovement";
+import { phoneLayer } from "./sublayers/phone";
 import { raycastLayer } from "./sublayers/raycast";
 import { systemLayer } from "./sublayers/system";
 import { windexLayer } from "./sublayers/windex";
@@ -19,6 +20,7 @@ export const spaceLayers = makeLayers(
     // mnei to arrows, caps modified to command arrows, t for cmd+tab
     ...homerowMovementKeys,
     d: deskLayer,
+    p: phoneLayer,
     b: browseLayer,
     ...duplicateLayer(["a", "o"], applicationsLayer),
     w: windexLayer,

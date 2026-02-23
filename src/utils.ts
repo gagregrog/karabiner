@@ -364,6 +364,16 @@ export function shell(
 }
 
 /**
+ * Run a shell command and display its JSON output in a dialog
+ */
+export function showOutput(command: string, description: string): LayerCommand {
+  return {
+    to: [{ shell_command: `${command} | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file "/tmp/karabiner_output.json")'` }],
+    description,
+  };
+}
+
+/**
  * Simple remap from one key to another
  */
 export function to(keyCode: KeyCode, modifiers?: ModifierKey[]): LayerCommand {
