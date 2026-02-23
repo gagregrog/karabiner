@@ -6,7 +6,8 @@ const PHONE_HOST = "phone.home";
  * Phone shortcuts
  */
 export const phoneLayer: LayerKeySublayer = {
-  r: phonePost("ring/us", "Ring the phone"),
+  return_or_enter: phonePost("ring/us", "Ring the phone"),
+  delete_or_backspace: phonePost("ring/stop", "Stop the phone ringing"),
   5: phonePostWithDisplay("timer/5m", "Set a 5 minute timer"),
   s: phoneGet("ring/status", "Show ring status"),
   c: phonePostWithDisplay("timer/cancel", "Cancel running timer"),
