@@ -5,6 +5,7 @@ import { app, LayerKeySublayer, withConditions } from "../../utils";
  * Activate various applications
  */
 export const applicationsLayer: LayerKeySublayer = {
+  c: withConditions(app("Conductor"), isNotIntelCondition),
   p: app("1Password"),
   t: app("Alacritty"),
   d: withConditions(app("DBeaver"), isNotIntelCondition),
