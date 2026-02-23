@@ -1257,6 +1257,30 @@
               {
                 "to": [
                   {
+                    "shell_command": "curl -X POST http://phone.home/ring/chirp/1"
+                  }
+                ],
+                "description": "Chirp the phone",
+                "type": "basic",
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
                     "shell_command": "curl -s -X POST http://phone.home/timer/cancel | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
                   }
                 ],
@@ -1470,6 +1494,30 @@
                 "type": "basic",
                 "from": {
                   "key_code": "s",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "l_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "curl -X POST http://phone.home/ring/chirp/1"
+                  }
+                ],
+                "description": "Chirp the phone",
+                "type": "basic",
+                "from": {
+                  "key_code": "l",
                   "modifiers": {
                     "optional": [
                       "any"
