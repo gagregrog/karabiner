@@ -20,7 +20,7 @@ export const spaceLayers = makeLayers(
     // mnei to arrows, caps modified to command arrows, t for cmd+tab
     ...homerowMovementKeys,
     d: deskLayer,
-    p: phoneLayer,
+    ...duplicateLayer(["p", "l"], phoneLayer),
     b: browseLayer,
     ...duplicateLayer(["a", "o"], applicationsLayer),
     w: windexLayer,
