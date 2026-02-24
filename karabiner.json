@@ -1233,7 +1233,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "curl -s http://phone.home/ring/status | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
+                    "shell_command": "curl -s http://phone.home/status | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
                   }
                 ],
                 "description": "Show ring status",
@@ -1511,7 +1511,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "curl -s http://phone.home/ring/status | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
+                    "shell_command": "curl -s http://phone.home/status | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file \"/tmp/karabiner_output.json\")'"
                   }
                 ],
                 "description": "Show ring status",
