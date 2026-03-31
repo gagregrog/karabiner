@@ -6,6 +6,7 @@ import { deskLayer } from "./sublayers/desk";
 import { homerowMovementKeys } from "./sublayers/homerowMovement";
 import { phoneLayer } from "./sublayers/phone";
 import { raycastLayer } from "./sublayers/raycast";
+import { tupleLayer } from "./sublayers/tuple";
 import { systemLayer } from "./sublayers/system";
 import { windexLayer } from "./sublayers/windex";
 import { yabaiLayer } from "./sublayers/yabai";
@@ -38,6 +39,7 @@ export const spaceLayers = makeLayers(
     y: yabaiLayer,
     s: systemLayer,
     r: raycastLayer,
+    t: tupleLayer,
   },
   trackedKeyInactive(SHIFT_MOD)
 );

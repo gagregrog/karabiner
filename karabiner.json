@@ -357,6 +357,11 @@
                     "type": "variable_if",
                     "name": "r_pressed",
                     "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
                   }
                 ]
               }
@@ -460,6 +465,11 @@
                   {
                     "type": "variable_if",
                     "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
                     "value": 0
                   }
                 ]
@@ -565,6 +575,11 @@
                     "type": "variable_if",
                     "name": "r_pressed",
                     "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
                   }
                 ]
               }
@@ -668,6 +683,11 @@
                   {
                     "type": "variable_if",
                     "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
                     "value": 0
                   }
                 ]
@@ -773,6 +793,11 @@
                   {
                     "type": "variable_if",
                     "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -995,6 +1020,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "layers_pressed",
                     "value": 1
                   }
@@ -1149,6 +1179,11 @@
                   {
                     "type": "variable_if",
                     "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -1431,6 +1466,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "layers_pressed",
                     "value": 1
                   }
@@ -1709,6 +1749,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "layers_pressed",
                     "value": 1
                   }
@@ -1911,6 +1956,11 @@
                   {
                     "type": "variable_if",
                     "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
                     "value": 0
                   },
                   {
@@ -2523,6 +2573,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "layers_pressed",
                     "value": 1
                   }
@@ -3131,6 +3186,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "layers_pressed",
                     "value": 1
                   }
@@ -3531,6 +3591,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "layers_pressed",
                     "value": 1
                   }
@@ -3916,6 +3981,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "layers_pressed",
                     "value": 1
                   }
@@ -4204,6 +4274,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "layers_pressed",
                     "value": 1
                   }
@@ -4376,6 +4451,238 @@
                     "value": 1
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "description": "layers sublayer \"t\"",
+            "manipulators": [
+              {
+                "description": "Toggle layers sublayer t",
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "t_pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "t_pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "m_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "n_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "e_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "i_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "caps_lock_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "d_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "p_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "l_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "b_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "a_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "o_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "w_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "y_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "s_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "r_pressed",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "layers_pressed",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "To backslash",
+                "to": [
+                  {
+                    "key_code": "backslash",
+                    "modifiers": [
+                      "option",
+                      "shift",
+                      "command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                }
+              },
+              {
+                "description": "To quote",
+                "to": [
+                  {
+                    "key_code": "quote",
+                    "modifiers": [
+                      "option",
+                      "shift",
+                      "command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                }
+              },
+              {
+                "description": "To grave_accent_and_tilde",
+                "to": [
+                  {
+                    "key_code": "grave_accent_and_tilde",
+                    "modifiers": [
+                      "option",
+                      "shift",
+                      "command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "delete_or_backspace",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                }
               }
             ]
           },
