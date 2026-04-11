@@ -4800,6 +4800,45 @@
                     ]
                   }
                 }
+              },
+              {
+                "description": "To 9",
+                "to": [
+                  {
+                    "key_code": "9",
+                    "modifiers": [
+                      "option",
+                      "shift",
+                      "command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "t_pressed",
+                    "value": 1
+                  },
+                  {
+                    "type": "device_exists_unless",
+                    "identifiers": [
+                      {
+                        "is_keyboard": true,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                      }
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                }
               }
             ]
           },

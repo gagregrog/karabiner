@@ -9,6 +9,7 @@ const tupleCommands: Partial<Record<KeyCode, LayerCommand>> = {
   h: to("1", ["option", "shift", "command"]),
   comma: to("2", ["option", "shift", "command"]),
   period: to("3", ["option", "shift", "command"]),
+  n: to("9", ["option", "shift", "command"]),
 };
 
 export const tupleLayer: LayerKeySublayer = Object.fromEntries(
