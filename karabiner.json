@@ -2113,27 +2113,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Arc.app'"
+                    "shell_command": "open -b \"$(defaults read com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers | sed -n -e '/LSHandlerURLScheme = https;/{x;p;d;}' -e 's/.*=[^\"]\"\\(.*\\)\";/\\1/g' -e x)\""
                   }
                 ],
-                "description": "Open -a 'Arc.app'",
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "a_pressed",
-                    "value": 1
-                  },
-                  {
-                    "type": "device_exists_unless",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "product_id": 632,
-                        "vendor_id": 1452
-                      }
-                    ]
-                  }
-                ],
+                "description": "Open default browser",
                 "type": "basic",
                 "from": {
                   "key_code": "b",
@@ -2142,41 +2125,14 @@
                       "any"
                     ]
                   }
-                }
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open -a 'Brave Browser.app'"
-                  }
-                ],
-                "description": "Open -a 'Brave Browser.app'",
+                },
                 "conditions": [
                   {
                     "type": "variable_if",
                     "name": "a_pressed",
                     "value": 1
-                  },
-                  {
-                    "type": "device_exists_if",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "product_id": 632,
-                        "vendor_id": 1452
-                      }
-                    ]
                   }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "b",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                }
+                ]
               },
               {
                 "to": [
@@ -2726,27 +2682,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Arc.app'"
+                    "shell_command": "open -b \"$(defaults read com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers | sed -n -e '/LSHandlerURLScheme = https;/{x;p;d;}' -e 's/.*=[^\"]\"\\(.*\\)\";/\\1/g' -e x)\""
                   }
                 ],
-                "description": "Open -a 'Arc.app'",
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "o_pressed",
-                    "value": 1
-                  },
-                  {
-                    "type": "device_exists_unless",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "product_id": 632,
-                        "vendor_id": 1452
-                      }
-                    ]
-                  }
-                ],
+                "description": "Open default browser",
                 "type": "basic",
                 "from": {
                   "key_code": "b",
@@ -2755,41 +2694,14 @@
                       "any"
                     ]
                   }
-                }
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open -a 'Brave Browser.app'"
-                  }
-                ],
-                "description": "Open -a 'Brave Browser.app'",
+                },
                 "conditions": [
                   {
                     "type": "variable_if",
                     "name": "o_pressed",
                     "value": 1
-                  },
-                  {
-                    "type": "device_exists_if",
-                    "identifiers": [
-                      {
-                        "is_keyboard": true,
-                        "product_id": 632,
-                        "vendor_id": 1452
-                      }
-                    ]
                   }
-                ],
-                "type": "basic",
-                "from": {
-                  "key_code": "b",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                }
+                ]
               },
               {
                 "to": [

@@ -368,7 +368,11 @@ export function shell(
  */
 export function showOutput(command: string, description: string): LayerCommand {
   return {
-    to: [{ shell_command: `${command} | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file "/tmp/karabiner_output.json")'` }],
+    to: [
+      {
+        shell_command: `${command} | jq . > /tmp/karabiner_output.json && osascript -e 'display dialog (read POSIX file "/tmp/karabiner_output.json")'`,
+      },
+    ],
     description,
   };
 }
@@ -388,6 +392,20 @@ export function to(keyCode: KeyCode, modifiers?: ModifierKey[]): LayerCommand {
  */
 export function app(name: string): LayerCommand {
   return open(`-a '${name}.app'`);
+}
+
+/**
+ * Open the system default browser
+ */
+export function openDefaultBrowser(): LayerCommand {
+  const readHandlers = `defaults read com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers`;
+  const parseHttpsBundle = `sed -n -e '/LSHandlerURLScheme = https;/{x;p;d;}' -e 's/.*=[^"]"\\(.*\\)";/\\1/g' -e x`;
+  return {
+    to: [
+      { shell_command: `open -b "$(${readHandlers} | ${parseHttpsBundle})"` },
+    ],
+    description: "Open default browser",
+  };
 }
 
 /**

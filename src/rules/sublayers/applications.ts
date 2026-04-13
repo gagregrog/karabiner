@@ -1,5 +1,10 @@
 import { isIntelCondition, isNotIntelCondition } from "../../conditions";
-import { app, LayerKeySublayer, withConditions } from "../../utils";
+import {
+  app,
+  LayerKeySublayer,
+  openDefaultBrowser,
+  withConditions,
+} from "../../utils";
 
 /**
  * Activate various applications
@@ -10,10 +15,7 @@ export const applicationsLayer: LayerKeySublayer = {
   t: app("Alacritty"),
   d: withConditions(app("DBeaver"), isNotIntelCondition),
   l: app("Logseq"),
-  b: [
-    withConditions(app("Arc"), isNotIntelCondition),
-    withConditions(app("Brave Browser"), isIntelCondition),
-  ],
+  b: openDefaultBrowser(),
   e: withConditions(app("ExpressVPN"), isIntelCondition),
   f: app("Finder"),
   m: withConditions(app("Messages"), isIntelCondition),
