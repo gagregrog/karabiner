@@ -4627,7 +4627,7 @@
                 ],
                 "type": "basic",
                 "from": {
-                  "key_code": "h",
+                  "key_code": "l",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -4666,7 +4666,7 @@
                 ],
                 "type": "basic",
                 "from": {
-                  "key_code": "comma",
+                  "key_code": "u",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -4705,7 +4705,7 @@
                 ],
                 "type": "basic",
                 "from": {
-                  "key_code": "period",
+                  "key_code": "y",
                   "modifiers": {
                     "optional": [
                       "any"
