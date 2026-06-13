@@ -18,6 +18,7 @@ export const applicationsLayer: LayerKeySublayer = {
   b: openDefaultBrowser(),
   e: withConditions(app("ExpressVPN"), isIntelCondition),
   f: app("Finder"),
+  g: withConditions(app("Granola"), isNotIntelCondition),
   m: withConditions(app("Messages"), isIntelCondition),
   n: withConditions(app("Notion"), isNotIntelCondition),
   q: app("QuickTime Player"),
