@@ -1,5 +1,6 @@
 import { isBuiltInCondition } from "../conditions";
 import { ice } from "../mappings/ice";
+import { appleSiliconOnly } from "../machine";
 import { mouseless } from "../mappings/mouseless";
 import { KeyCode, Manipulator, ModifierKey, Rule } from "../types";
 import { remap, withConditions } from "../utils";
@@ -21,7 +22,7 @@ export const chords: Rule = {
     makeChord(["x", "c"], "left_command", ["left_option"]),
     remap(["s", "e"], mouseless.click),
     remap(["t", "n"], mouseless.scroll),
-    remap(["r", "i"], ice.search),
+    ...appleSiliconOnly([remap(["r", "i"], ice.search)]),
   ].map((manipulator) => withConditions(manipulator, isBuiltInCondition)),
 };
 

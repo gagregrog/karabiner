@@ -38,6 +38,17 @@ yarn run build
 
 builds the `karabiner.json` from the `rules.ts`.
 
+`karabiner.json` is generated per-machine and is **not** committed, so you must run
+`yarn run build` on each machine after pulling changes. The build branches on two
+signals:
+
+- **Work vs personal** — work-only bindings are included when the `IS_WORK_MACHINE`
+  environment variable is set at build time (`workOnly` / `personalOnly`).
+- **Apple Silicon vs Intel** — Apple-Silicon-only bindings are included based on
+  `process.arch` (`appleSiliconOnly`).
+
+The build logs which machine it detected.
+
 ```
 yarn run watch
 ```

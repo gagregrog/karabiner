@@ -1,5 +1,6 @@
 import { KeyCode } from "../types";
 import { duplicateLayer, makeLayers, trackedKeyInactive } from "../utils";
+import { workOnly } from "../machine";
 import { applicationsLayer } from "./sublayers/applications";
 import { browseLayer } from "./sublayers/browse";
 import { deskLayer } from "./sublayers/desk";
@@ -39,7 +40,7 @@ export const spaceLayers = makeLayers(
     y: yabaiLayer,
     s: systemLayer,
     r: raycastLayer,
-    t: tupleLayer,
+    ...workOnly({ t: tupleLayer }),
   },
   trackedKeyInactive(SHIFT_MOD)
 );

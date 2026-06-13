@@ -1,30 +1,28 @@
-import { isIntelCondition, isNotIntelCondition } from "../../conditions";
-import {
-  app,
-  LayerKeySublayer,
-  openDefaultBrowser,
-  withConditions,
-} from "../../utils";
+import { app, LayerKeySublayer, openDefaultBrowser } from "../../utils";
+import { personalOnly, workOnly } from "../../machine";
 
 /**
  * Activate various applications
  */
 export const applicationsLayer: LayerKeySublayer = {
-  c: withConditions(app("Conductor"), isNotIntelCondition),
   p: app("1Password"),
-  t: app("Alacritty"),
-  d: withConditions(app("DBeaver"), isNotIntelCondition),
+  t: app("Ghostty"),
   l: app("Logseq"),
   b: openDefaultBrowser(),
-  e: withConditions(app("ExpressVPN"), isIntelCondition),
   f: app("Finder"),
-  g: withConditions(app("Granola"), isNotIntelCondition),
-  m: withConditions(app("Messages"), isIntelCondition),
-  n: withConditions(app("Notion"), isNotIntelCondition),
   q: app("QuickTime Player"),
-  s: withConditions(app("Slack"), isNotIntelCondition),
-  h: withConditions(app("Tuple"), isNotIntelCondition),
   v: app("Visual Studio Code"),
   y: app("YT Music"),
   z: app("zoom.us"),
+  ...workOnly({
+    c: app("Conductor"),
+    d: app("DBeaver"),
+    g: app("Granola"),
+    n: app("Notion"),
+    s: app("Slack"),
+    h: app("Tuple"),
+  }),
+  ...personalOnly({
+    m: app("Messages"),
+  }),
 };
