@@ -7,7 +7,7 @@ import { personalOnly, workOnly } from "../../machine";
 export const applicationsLayer: LayerKeySublayer = {
   p: app("1Password"),
   t: app("Ghostty"),
-  l: app("Logseq"),
+  l: app("Obsidian"),
   b: openDefaultBrowser(),
   f: app("Finder"),
   q: app("QuickTime Player"),
@@ -24,5 +24,6 @@ export const applicationsLayer: LayerKeySublayer = {
   }),
   ...personalOnly({
     m: app("Messages"),
+    d: app("Discord"),
   }),
 };
