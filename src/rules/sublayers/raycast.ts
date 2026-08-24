@@ -15,4 +15,5 @@ export const raycastLayer: LayerKeySublayer = {
   ),
   a: open("raycast://script-commands/view-scripting-dictionary"),
   e: open("raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"),
+  s: open("raycast://script-commands/slack-typer"),
 };
