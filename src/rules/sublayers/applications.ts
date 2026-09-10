@@ -5,6 +5,7 @@ import { personalOnly, workOnly } from "../../machine";
  * Activate various applications
  */
 export const applicationsLayer: LayerKeySublayer = {
+  a: app("Audio Hijack"),
   p: app("1Password"),
   t: app("Ghostty"),
   l: app("Obsidian"),
